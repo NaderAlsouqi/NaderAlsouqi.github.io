@@ -12,7 +12,7 @@
   var UI = {
     en: {
       "brand": "Nader",
-      "nav.about": "About", "nav.skills": "Skills", "nav.experience": "Experience",
+      "nav.about": "About", "nav.skills": "Skills", "nav.projects": "Projects", "nav.experience": "Experience",
       "nav.education": "Education", "nav.contact": "Contact",
       "hero.eyebrow": "Hi, I'm",
       "hero.name": "Nader Samir Alsouqi",
@@ -28,6 +28,7 @@
       "about.p1": "My work spans the fintech, blockchain and ERP domains — specialized in .NET Core and C#, with a proven record of delivering scalable, high-performance systems for real-time financial trading, decentralized platforms and multi-branch business operations.",
       "about.p2": "I'm skilled at translating complex business requirements into robust technical solutions and collaborating effectively within cross-functional, multinational teams.",
       "skills.kicker": "my", "skills.title": "Toolbox",
+      "projects.kicker": "things I've", "projects.title": "Built",
       "exp.kicker": "where I've", "exp.title": "Experience",
       "edu.kicker": "how I", "edu.title": "Education",
       "contact.kicker": "say", "contact.title": "Hello",
@@ -38,7 +39,7 @@
     },
     ar: {
       "brand": "نادر",
-      "nav.about": "نبذة", "nav.skills": "المهارات", "nav.experience": "الخبرات",
+      "nav.about": "نبذة", "nav.skills": "المهارات", "nav.projects": "المشاريع", "nav.experience": "الخبرات",
       "nav.education": "التعليم", "nav.contact": "تواصل",
       "hero.eyebrow": "مرحبًا، أنا",
       "hero.name": "نادر سمير السوقي",
@@ -54,6 +55,7 @@
       "about.p1": "تمتدّ أعمالي عبر مجالات التكنولوجيا المالية والبلوك تشين وأنظمة تخطيط موارد المؤسسات (ERP)، مع تخصّص في ‎.NET Core وC#‎، وسجلّ حافل في تسليم أنظمة قابلة للتوسّع وعالية الأداء للتداول المالي في الوقت الفعلي والمنصّات اللامركزية والعمليات التجارية متعددة الفروع.",
       "about.p2": "أمتلك القدرة على ترجمة متطلبات العمل المعقّدة إلى حلول تقنية متينة، والتعاون بفاعلية ضمن فرق متعددة التخصصات ومتعددة الجنسيات.",
       "skills.kicker": "أدواتي", "skills.title": "المهارات التقنية",
+      "projects.kicker": "أعمال", "projects.title": "مختارة",
       "exp.kicker": "مسيرتي", "exp.title": "الخبرات المهنية",
       "edu.kicker": "دراستي", "edu.title": "التعليم",
       "contact.kicker": "قل", "contact.title": "مرحبًا",
@@ -85,6 +87,49 @@
       items: ["Visual Studio", "Git", "RabbitMQ", "JMeter", "MetaTrader", "cTrader", "cAlgo", "Android Studio", "Eclipse", "NetBeans"] },
     { title: { en: "Concepts & Patterns", ar: "المفاهيم وأنماط التصميم" },
       items: ["SDLC", "Automated Testing", "Requirements Engineering", "Real-Time Data", "Data Analytics", "Repository", "Factory", "MVC", "Builder", "Proxy"] }
+  ];
+
+  var PROJECTS = [
+    {
+      domain: { en: "ERP", ar: "أنظمة ERP" },
+      title: { en: "Car Rental ERP Platform", ar: "منصّة ERP لتأجير السيارات" },
+      meta: { en: "ACS-Tech · 2025–2026", ar: "ACS-Tech · 2025–2026" },
+      desc: {
+        en: "A scalable, multi-branch car-rental ERP in .NET Core — reservations, rental agreements, invoicing and CRM, with integrated payment gateways and real-time vehicle tracking, tuned for high transaction volumes.",
+        ar: "نظام ERP قابل للتوسّع متعدد الفروع لتأجير السيارات بلغة ‎.NET Core — يشمل الحجوزات وعقود التأجير والفوترة وإدارة علاقات العملاء، مع بوابات دفع مدمجة وتتبّع للمركبات في الوقت الفعلي، ومهيّأ لأحجام معاملات كبيرة."
+      },
+      stack: [".NET Core", "C#", "SQL Server", "Payments", "REST APIs"]
+    },
+    {
+      domain: { en: "Blockchain", ar: "بلوك تشين" },
+      title: { en: "Ethereum-like Crypto Platform", ar: "منصّة عملة رقمية شبيهة بالإيثيريوم" },
+      meta: { en: "GTA Startup · 2024 · Turkey", ar: "GTA Startup · 2024 · تركيا" },
+      desc: {
+        en: "Core modules for a blockchain financial platform modeled on Ethereum — transaction validation, wallet management and secure API communication, with token standards, performance monitoring and automated testing.",
+        ar: "الوحدات الأساسية لمنصّة مالية قائمة على البلوك تشين ومستوحاة من الإيثيريوم — التحقق من المعاملات وإدارة المحافظ والتواصل الآمن عبر الواجهات البرمجية، مع معايير الرموز ومراقبة الأداء والاختبار الآلي."
+      },
+      stack: ["Blockchain", "Smart Contracts", "dApps", "C#", "APIs"]
+    },
+    {
+      domain: { en: "Fintech", ar: "تقنية مالية" },
+      title: { en: "Financial Trading Platform", ar: "منصّة تداول مالي" },
+      meta: { en: "Equiti · 2019–2022 · Amman", ar: "Equiti · 2019–2022 · عمّان" },
+      desc: {
+        en: "High-performance trading tools for brokers — real-time pricing and profit/loss management, integrated with MetaTrader 4 (MT4) to streamline trading workflows and lift operational efficiency.",
+        ar: "أدوات تداول عالية الأداء للوسطاء — تسعير في الوقت الفعلي وإدارة الأرباح والخسائر، مدمجة مع منصّة MetaTrader 4 (MT4) لتبسيط سير عمل التداول ورفع الكفاءة التشغيلية."
+      },
+      stack: ["C#", ".NET", "SignalR", "MT4", "Real-Time Data"]
+    },
+    {
+      domain: { en: "Modernization", ar: "تحديث الأنظمة" },
+      title: { en: "Accounting System Modernization", ar: "تحديث نظام محاسبي" },
+      meta: { en: "Skyline · 2026–Present", ar: "Skyline · 2026 – حتى الآن" },
+      desc: {
+        en: "Re-engineered a legacy VB6 accounting system into a modern .NET + Angular architecture, plus a bespoke maintenance-management module and ongoing, reliability-focused ERP support.",
+        ar: "إعادة هندسة نظام محاسبي قديم مبني بلغة VB6 إلى بنية حديثة قائمة على ‎.NET وAngular، مع وحدة مخصّصة لإدارة الصيانة ودعم مستمر لأنظمة ERP يركّز على الموثوقية."
+      },
+      stack: [".NET", "Angular", "C#", "SQL Server", "ERP"]
+    }
   ];
 
   var EXPERIENCE = [
@@ -257,6 +302,20 @@
     }).join("");
   }
 
+  function renderProjects(lang) {
+    $("#projectsGrid").innerHTML = PROJECTS.map(function (p) {
+      var chips = p.stack.map(function (t) {
+        return '<span class="chip" dir="ltr">' + esc(t) + '</span>';
+      }).join("");
+      return '<article class="project-card">' +
+        '<span class="project-card__domain">' + esc(p.domain[lang]) + '</span>' +
+        '<h3 class="project-card__title">' + esc(p.title[lang]) + '</h3>' +
+        '<div class="project-card__meta" dir="auto">' + esc(p.meta[lang]) + '</div>' +
+        '<p class="project-card__desc">' + esc(p.desc[lang]) + '</p>' +
+        '<div class="chips">' + chips + '</div></article>';
+    }).join("");
+  }
+
   function renderExperience(lang) {
     var role = UI[lang]["role"];
     $("#timeline").innerHTML = EXPERIENCE.map(function (e) {
@@ -302,6 +361,7 @@
     // dynamic sections
     renderStats(lang);
     renderSkills(lang);
+    renderProjects(lang);
     renderExperience(lang);
     renderEducation(lang);
     // Only the very first render should play the staggered fade-in; a later
@@ -362,7 +422,7 @@
         }
       });
     }, { rootMargin: "-45% 0px -50% 0px" });
-    ["about", "skills", "experience", "education", "contact"].forEach(function (id) {
+    ["about", "skills", "projects", "experience", "education", "contact"].forEach(function (id) {
       var s = document.getElementById(id);
       if (s) obs.observe(s);
     });
