@@ -3,7 +3,7 @@
 <title>Nader Samir Alsouqi — Software Engineer</title>
 <meta name="description" content="Nader Samir Alsouqi — Software Engineer with 8+ years across fintech, blockchain and ERP. Specialized in .NET Core and C#. Amman, Jordan." />
 <meta name="author" content="Nader Samir Alsouqi" />
-<meta name="theme-color" content="#f3efe6" />
+<meta name="theme-color" content="#16161a" />
 <meta property="og:title" content="Nader Samir Alsouqi — Software Engineer" />
 <meta property="og:description" content="8+ years building scalable, high-performance systems for fintech, blockchain and ERP." />
 <meta property="og:type" content="website" />
@@ -20,9 +20,12 @@
     var d = document.documentElement;
     d.classList.add("js");
     try {
-      var t = localStorage.getItem("theme");
-      if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      // Dark is the default for first-time visitors (web + mobile); a saved
+      // choice always wins, so anyone who picks light keeps light.
+      var t = localStorage.getItem("theme") || "dark";
       d.setAttribute("data-theme", t);
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute("content", t === "dark" ? "#16161a" : "#f3efe6");
       var l = localStorage.getItem("lang") || "en";
       d.setAttribute("lang", l);
       d.setAttribute("dir", l === "ar" ? "rtl" : "ltr");
