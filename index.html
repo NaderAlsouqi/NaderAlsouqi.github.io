@@ -1,25 +1,34 @@
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nader Samir Alsouqi — Software Engineer</title>
-<meta name="description" content="Nader Samir Alsouqi — Software Engineer with 8+ years across fintech, blockchain and ERP. Specialized in .NET Core and C#. Amman, Jordan." />
-<meta name="author" content="Nader Samir Alsouqi" />
-<meta name="theme-color" content="#16161a" />
-<meta property="og:title" content="Nader Samir Alsouqi — Software Engineer" />
-<meta property="og:description" content="8+ years building scalable, high-performance systems for fintech, blockchain and ERP." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://naderalsouqi.github.io/" />
-<meta property="og:image" content="https://naderalsouqi.github.io/assets/profile.jpg" />
-<meta property="og:image:alt" content="Sketched portrait of Nader Samir Alsouqi" />
-<meta property="og:locale" content="en_US" />
-<meta property="og:locale:alternate" content="ar_JO" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Nader Samir Alsouqi — Software Engineer" />
-<meta name="twitter:description" content="8+ years building scalable, high-performance systems for fintech, blockchain and ERP." />
-<meta name="twitter:image" content="https://naderalsouqi.github.io/assets/profile.jpg" />
-<link rel="canonical" href="https://naderalsouqi.github.io/" />
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<meta name="description" content="Software engineer in Amman, Jordan. 8+ years in .NET Core and C#, building trading, blockchain and ERP systems.">
+<meta name="author" content="Nader Samir Alsouqi">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#EDEDED" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131313" media="(prefers-color-scheme: dark)">
 
-<!-- Structured data: helps search engines understand who this is -->
+<link rel="canonical" href="https://naderalsouqi.github.io/">
+<link rel="alternate" hreflang="en" href="https://naderalsouqi.github.io/">
+<link rel="alternate" hreflang="ar" href="https://naderalsouqi.github.io/?lang=ar">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/profile.jpg">
+
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Nader Samir Alsouqi — Software Engineer">
+<meta property="og:description" content="8+ years of enterprise engineering across fintech, blockchain and ERP — .NET Core, C#, Angular, SQL Server.">
+<meta property="og:url" content="https://naderalsouqi.github.io/">
+<meta property="og:image" content="https://naderalsouqi.github.io/assets/profile.jpg">
+<meta property="og:image:alt" content="Graphite sketch portrait of Nader Samir Alsouqi">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ar_JO">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nader Samir Alsouqi — Software Engineer">
+<meta name="twitter:description" content="8+ years of enterprise engineering across fintech, blockchain and ERP — .NET Core, C#, Angular, SQL Server.">
+<meta name="twitter:image" content="https://naderalsouqi.github.io/assets/profile.jpg">
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -30,244 +39,451 @@
   "url": "https://naderalsouqi.github.io/",
   "image": "https://naderalsouqi.github.io/assets/profile.jpg",
   "email": "mailto:Nader.7.samir@gmail.com",
-  "sameAs": ["https://github.com/NaderAlsouqi"],
+  "telephone": "+962777690484",
+  "sameAs": ["https://github.com/NaderAlsouqi", "https://www.linkedin.com/in/nader-alsouqi-269789335/"],
   "address": { "@type": "PostalAddress", "addressLocality": "Amman", "addressCountry": "JO" },
   "alumniOf": { "@type": "CollegeOrUniversity", "name": "Jordan University of Science and Technology" },
   "knowsLanguage": ["en", "ar"],
-  "knowsAbout": [".NET Core", "C#", "ASP.NET", "Angular", "SQL Server", "SignalR", "Fintech", "Blockchain", "ERP"]
+  "knowsAbout": [".NET Core", "C#", "ASP.NET", "Angular", "SignalR", "SQL Server", "Redis", "RabbitMQ", "Blockchain", "ERP", "Fintech"]
 }
 </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700&family=Caveat:wght@500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,SOFT,WONK,wght@0,9..144,0..100,0..1,400..700;1,9..144,0..100,0..1,400..700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400&display=swap">
+<link rel="preload" as="image" href="assets/profile.jpg" fetchpriority="high">
+<link rel="stylesheet" href="styles.css">
 
-<!-- Prevent flash of wrong theme / language -->
 <script>
-  (function () {
-    var d = document.documentElement;
-    d.classList.add("js");
-    try {
-      // Dark is the default for first-time visitors (web + mobile); a saved
-      // choice always wins, so anyone who picks light keeps light.
-      var t = localStorage.getItem("theme") || "dark";
-      d.setAttribute("data-theme", t);
-      var meta = document.querySelector('meta[name="theme-color"]');
-      if (meta) meta.setAttribute("content", t === "dark" ? "#16161a" : "#f3efe6");
-      var l = localStorage.getItem("lang") || "en";
-      d.setAttribute("lang", l);
-      d.setAttribute("dir", l === "ar" ? "rtl" : "ltr");
-    } catch (e) {}
-  })();
+/* Set language, direction and theme before first paint. */
+(function () {
+  var d = document.documentElement;
+  var p = new URLSearchParams(location.search);
+  var q = p.get('lang'), qt = p.get('theme');
+  var l = (q === 'ar' || q === 'en') ? q : (localStorage.getItem('lang') || 'en');
+  var t = (qt === 'dark' || qt === 'light') ? qt : (localStorage.getItem('theme') ||
+          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+  d.lang = l;
+  d.dir = l === 'ar' ? 'rtl' : 'ltr';
+  d.setAttribute('data-theme', t);
+  d.classList.add('js');
+  if (l === 'ar') {
+    var k = document.createElement('link');
+    k.rel = 'stylesheet'; k.id = 'ar-fonts';
+    k.href = 'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Reem+Kufi:wght@400..700&display=swap';
+    document.head.appendChild(k);
+  }
+})();
 </script>
+</head>
 
-<!-- ============ NAV ============ -->
-<header class="nav" id="nav">
-  <div class="nav__inner">
-    <a class="brand" href="#hero" aria-label="Nader Samir Alsouqi — home">
-      <span class="brand__mark">N</span>
-      <span data-i18n="brand">Nader</span>
+<body id="top">
+<a class="skip" href="#main" data-t="ui.skipToContent">Skip to content</a>
+
+<!-- page furniture: margin hairlines + registration crosses -->
+<div class="furniture" aria-hidden="true">
+  <span class="furniture__rule furniture__rule--start"></span>
+  <span class="furniture__rule furniture__rule--end"></span>
+  <span class="reg reg--tl"></span><span class="reg reg--tr"></span>
+  <span class="reg reg--bl"></span><span class="reg reg--br"></span>
+</div>
+<div class="foreedge" aria-hidden="true"></div>
+
+<header class="masthead" role="banner">
+  <div class="masthead__inner sheet">
+    <a class="mark" href="#top" data-t-attr="aria-label:ui.ariaHome" aria-label="Nader Samir Alsouqi — home">
+      <span class="mark__name" data-t="hero.name">Nader Samir Alsouqi</span>
     </a>
 
-    <nav class="nav__links" id="navLinks" aria-label="Primary">
-      <a href="#about"      data-i18n="nav.about">About</a>
-      <a href="#skills"     data-i18n="nav.skills">Skills</a>
-      <a href="#projects"   data-i18n="nav.projects">Projects</a>
-      <a href="#experience" data-i18n="nav.experience">Experience</a>
-      <a href="#education"  data-i18n="nav.education">Education</a>
-      <a href="#contact"    data-i18n="nav.contact">Contact</a>
+    <nav class="nav" data-t-attr="aria-label:ui.ariaPrimaryNav" aria-label="Primary navigation">
+      <ul class="nav__list">
+        <li class="nav__item"><a class="nav__link" href="#about" data-num="01"><span data-t="nav.0.label">About</span></a></li>
+        <li class="nav__item"><a class="nav__link" href="#work" data-num="02"><span data-t="nav.2.label">Work</span></a></li>
+        <li class="nav__item"><a class="nav__link" href="#experience" data-num="03"><span data-t="nav.3.label">Experience</span></a></li>
+        <li class="nav__item"><a class="nav__link" href="#skills" data-num="04"><span data-t="nav.1.label">Skills</span></a></li>
+        <li class="nav__item"><a class="nav__link" href="#contact" data-num="05"><span data-t="nav.5.label">Contact</span></a></li>
+      </ul>
     </nav>
 
-    <div class="nav__tools">
-      <button class="icon-btn" id="langBtn" type="button" aria-label="Switch language">
-        <span>العربية</span>
+    <div class="controls">
+      <button class="ctrl ctrl--lang" id="langBtn" type="button" lang="ar"
+              data-t-attr="aria-label:ui.langSwitchAria" aria-label="Switch to Arabic">
+        <span data-t="ui.langSwitch">العربية</span>
       </button>
-      <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle dark mode">
-        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-      </button>
-      <button class="icon-btn nav__toggle" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <button class="ctrl ctrl--theme" id="themeBtn" type="button" aria-pressed="false"
+              data-t-attr="aria-label:ui.themeToggle" aria-label="Toggle theme">
+        <span class="ctrl__chip" aria-hidden="true"></span>
       </button>
     </div>
   </div>
 </header>
 
-<main>
-  <!-- ============ HERO ============ -->
-  <section id="hero">
-    <div class="wrap hero reveal">
-      <div class="hero__text">
-        <p class="hero__eyebrow" data-i18n="hero.eyebrow">Hi, I'm</p>
-        <h1 class="hero__name" data-i18n="hero.name">Nader Samir Alsouqi</h1>
-        <p class="hero__role">
-          <span data-i18n="hero.role">Software Engineer</span>
-          <span class="dot">✦</span>
-          <span data-i18n="hero.exp">8+ years</span>
-        </p>
-        <p class="hero__tagline" data-i18n="hero.tagline">
-          I build scalable, high-performance systems for fintech, blockchain and ERP — turning complex business requirements into robust, real-world software.
-        </p>
-        <div class="hero__cta">
-          <a class="btn btn--solid" href="assets/Nader_Samir_Alsouqi_CV.pdf" download>
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
-            <span data-i18n="hero.cv">Download CV</span>
-          </a>
-          <a class="btn" href="#contact" data-i18n="hero.contact">Get in touch</a>
-        </div>
-        <div class="hero__meta">
-          <a href="mailto:Nader.7.samir@gmail.com">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-            Nader.7.samir@gmail.com
-          </a>
-          <a href="tel:+962777690484" dir="ltr">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.5-1.1a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></svg>
-            +962 7 7769 0484
-          </a>
-          <span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span data-i18n="hero.location">Amman, Jordan</span>
-          </span>
-        </div>
-        <div class="hero__social">
-          <a class="social-link" href="https://github.com/NaderAlsouqi" target="_blank" rel="noopener" aria-label="GitHub profile">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.5 18 4.8 18 4.8c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
-          </a>
-          <a class="social-link" href="https://www.linkedin.com/in/nader-alsouqi-269789335/" target="_blank" rel="noopener" aria-label="LinkedIn profile">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
-          </a>
-        </div>
-      </div>
+<main id="main" tabindex="-1">
 
-      <div class="portrait" id="portrait">
-        <div class="portrait__frame">
-          <img class="portrait__img" id="portraitImg" src="assets/profile.jpg" alt="Sketched portrait of Nader Samir Alsouqi" />
-          <div class="portrait__fallback" aria-hidden="true">N.S</div>
-        </div>
-        <span class="portrait__tag" data-i18n="hero.tag">Software Engineer</span>
+  <!-- ============================ HERO / PLATE 01 ============================ -->
+  <section id="hero" class="sheet" aria-labelledby="h-name">
+   <div class="hero__text">
+    <p class="hero__label micro">
+      <span data-t="hero.role">Software Engineer</span> <span class="em" aria-hidden="true">—</span> <span data-t="hero.location">Amman, Jordan</span>
+    </p>
+
+    <h1 class="hero__name" id="h-name">
+      <span class="hero__line1" data-t="hero.nameLine1">Nader Samir</span>
+      <span class="hero__line2" data-t="hero.nameLine2">Alsouqi</span>
+    </h1>
+
+    <p class="hero__deck" data-t="hero.tagline">I build the systems money moves through — trading platforms, blockchain wallets and multi-branch ERP, mostly in .NET Core and C#.</p>
+
+    <ul class="hero__colophon micro">
+      <li><bdi data-t="hero.years">8+ years</bdi></li>
+      <li dir="ltr" class="mono">.NET Core · C#</li>
+      <li><span data-t="hero.eyebrow">Fintech · Blockchain · ERP</span></li>
+    </ul>
+
+    <p class="hero__links">
+      <a class="link link--cta" href="#work"><span data-t="hero.ctaPrimary">See selected work</span> <span class="icon-arrow" aria-hidden="true">→</span></a>
+      <a class="link link--cta" href="assets/Nader_Samir_Alsouqi_CV.pdf" download><span data-t="hero.ctaSecondary">Download CV</span> <span aria-hidden="true">↓</span></a>
+    </p>
+   </div>
+
+    <figure class="plate">
+      <div class="plate__inner">
+        <img class="plate__img" id="portrait" src="assets/profile.jpg" width="1080" height="1080"
+             alt="Graphite sketch portrait of Nader Samir Alsouqi" data-t-attr="alt:ui.portraitAlt"
+             decoding="async" fetchpriority="high">
       </div>
+      <span class="plate__marks" aria-hidden="true"></span>
+      <figcaption class="plate__cap micro"><span data-t="captions.plate">Pl. 01 — graphite on bond, 2026</span></figcaption>
+    </figure>
+
+  </section>
+
+  <!-- ============================== 01 ABOUT ================================ -->
+  <section id="about" class="sheet" aria-labelledby="h-about">
+      <header class="sect-head">
+        <span class="sect-num micro" data-num-en="01" data-num-ar="١" aria-hidden="true"></span>
+        <span class="eyebrow micro" data-t="about.kicker">Profile</span>
+        <h2 data-t="about.title" id="h-about">The engineer behind the sketch</h2>
+      </header>
+
+    <div class="about__prose">
+      <p class="about__lead" data-t="about.lead">Eight-plus years building enterprise software where being wrong costs money: trading screens, token wallets, rental fleets and accounting ledgers.</p>
+      <p data-t="about.paragraphs.0">I specialize in .NET Core and C#, designing systems that stay fast under real load — real-time pricing, multi-branch operations and decentralized platforms.</p>
+      <p data-t="about.paragraphs.1">My work usually starts as a business problem, not a ticket. I sit with product managers and clients, then translate requirements into architecture.</p>
+      <p data-t="about.paragraphs.2">I have worked from Jordan and alongside multinational teams in Turkey and the United States, in Arabic and English alike.</p>
+    </div>
+
+    <aside class="specimen" aria-label="Career at a glance" data-t-attr="aria-label:ui.ariaStats">
+      <dl class="label">
+        <dt><span data-t="specimen.location">Location</span></dt><dd><span data-t="hero.location">Amman, Jordan</span></dd>
+        <dt><span data-t="specimen.since">Practising since</span></dt><dd class="mono"><bdi>2017</bdi></dd>
+        <dt><span data-t="specimen.companies">Companies</span></dt><dd class="mono"><bdi>06</bdi></dd>
+        <dt><span data-t="specimen.domains">Domains</span></dt><dd><span data-t="hero.eyebrow">Fintech · Blockchain · ERP</span></dd>
+        <dt><span data-t="specimen.core">Core stack</span></dt><dd class="mono" dir="ltr">.NET Core · C# · SQL Server</dd>
+        <dt><span data-t="specimen.languages">Languages</span></dt><dd><span data-t="specimen.languagesV">English · العربية</span></dd>
+      </dl>
+    </aside>
+  </section>
+
+  <!-- =========================== 02 SELECTED WORK =========================== -->
+  <section id="work" class="sheet" aria-labelledby="h-work">
+      <header class="sect-head">
+        <span class="sect-num micro" data-num-en="02" data-num-ar="٢" aria-hidden="true"></span>
+        <span class="eyebrow micro" data-t="projects.kicker">Selected work</span>
+        <h2 data-t="projects.title" id="h-work">Four systems, four problems</h2>
+      </header>
+    <p class="sect-intro" data-t="projects.intro">Client work, not side projects. Each one is a production system I designed or rebuilt inside a real business.</p>
+
+      <article class="work" style="--span:content-start / span 7; --i:0">
+        <span class="work__ghost" aria-hidden="true">01</span>
+        <div class="work__study" aria-hidden="true"><svg class="study" viewBox="0 0 260 130" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet"><path pathLength="100" d="M 18 22 L 80 22 L 80 112 L 18 112 Z"/><path pathLength="100" d="M 18 112 L 80 82"/><path pathLength="100" d="M 18 104 L 80 74"/><path pathLength="100" d="M 18 96 L 80 66"/><path pathLength="100" d="M 18 88 L 80 58"/><path pathLength="100" d="M 18 80 L 80 50"/><path pathLength="100" d="M 18 72 L 80 42"/><path pathLength="100" d="M 18 64 L 80 34"/><path pathLength="100" d="M 18 56 L 80 26"/><path pathLength="100" d="M 18 48 L 80 18"/><path pathLength="100" d="M 18 40 L 80 10"/><path pathLength="100" d="M 18 32 L 80 2"/><path pathLength="100" d="M 96 67 L 138 67"/><path pathLength="100" d="M 152 44 L 242 44 L 242 56 L 152 56 Z"/><path pathLength="100" d="M 152 67 L 242 67 L 242 79 L 152 79 Z"/><path pathLength="100" d="M 152 90 L 242 90 L 242 102 L 152 102 Z"/></svg></div>
+        <h3 class="work__title" data-t="projects.items.0.name">Legacy Accounting System Rebuild</h3>
+        <p class="work__blurb" data-t="projects.items.0.blurb">A VB6 accounting system re-engineered into a modern .NET and Angular architecture, plus a maintenance module built for the client&#x27;s operations.</p>
+        <dl class="label">
+          <dt><span data-t="plateLabel.client">Client</span></dt><dd class="mono" dir="ltr">Skyline</dd>
+          <dt><span data-t="plateLabel.date">Date</span></dt><dd class="mono"><bdi data-t="projects.items.0.period">2026 — Present</bdi></dd>
+          <dt><span data-t="plateLabel.stack">Stack</span></dt><dd class="mono" dir="ltr">VB6 → .NET · Angular · C# · ERP · Modernization</dd>
+        </dl>
+        <ul class="work__points">
+          <li><span data-t="projects.items.0.highlights.0">Legacy VB6 core re-engineered onto .NET and Angular</span></li>
+          <li><span data-t="projects.items.0.highlights.1">Maintenance management system designed around client-specific operations</span></li>
+          <li><span data-t="projects.items.0.highlights.2">Ongoing ERP support: critical fixes and platform stability</span></li>
+        </ul>
+      </article>
+      <article class="work" style="--span:6 / content-end; --i:1">
+        <span class="work__ghost" aria-hidden="true">02</span>
+        <div class="work__study" aria-hidden="true"><svg class="study" viewBox="0 0 260 130" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet"><circle pathLength="100" cx="130" cy="66" r="17"/><path pathLength="100" d="M 130 66 L 46 32"/><circle pathLength="100" cx="46" cy="32" r="9"/><path pathLength="100" d="M 32 6 L 32 14"/><path pathLength="100" d="M 46 6 L 46 14"/><path pathLength="100" d="M 60 6 L 60 14"/><path pathLength="100" d="M 130 66 L 46 100"/><circle pathLength="100" cx="46" cy="100" r="9"/><path pathLength="100" d="M 32 118 L 32 126"/><path pathLength="100" d="M 46 118 L 46 126"/><path pathLength="100" d="M 60 118 L 60 126"/><path pathLength="100" d="M 130 66 L 206 32"/><circle pathLength="100" cx="206" cy="32" r="9"/><path pathLength="100" d="M 192 6 L 192 14"/><path pathLength="100" d="M 206 6 L 206 14"/><path pathLength="100" d="M 220 6 L 220 14"/><path pathLength="100" d="M 130 66 L 206 100"/><circle pathLength="100" cx="206" cy="100" r="9"/><path pathLength="100" d="M 192 118 L 192 126"/><path pathLength="100" d="M 206 118 L 206 126"/><path pathLength="100" d="M 220 118 L 220 126"/></svg></div>
+        <h3 class="work__title" data-t="projects.items.1.name">Multi-Branch Car Rental ERP</h3>
+        <p class="work__blurb" data-t="projects.items.1.blurb">A .NET Core ERP covering reservations, rental agreements, invoicing and CRM, architected for multiple branches and high concurrent transaction volume.</p>
+        <dl class="label">
+          <dt><span data-t="plateLabel.client">Client</span></dt><dd class="mono" dir="ltr">ACS-Tech</dd>
+          <dt><span data-t="plateLabel.date">Date</span></dt><dd class="mono"><bdi data-t="projects.items.1.period">2025 — 2026</bdi></dd>
+          <dt><span data-t="plateLabel.stack">Stack</span></dt><dd class="mono" dir="ltr">.NET Core · C# · Payments · Async · Caching · APIs</dd>
+        </dl>
+        <ul class="work__points">
+          <li><span data-t="projects.items.1.highlights.0">Reservations, agreements, invoicing and CRM in one platform</span></li>
+          <li><span data-t="projects.items.1.highlights.1">Secure payment gateways and third-party APIs for live vehicle tracking</span></li>
+          <li><span data-t="projects.items.1.highlights.2">Async programming, caching and query tuning for throughput</span></li>
+        </ul>
+      </article>
+      <article class="work" style="--span:content-start / span 8; --i:2">
+        <span class="work__ghost" aria-hidden="true">03</span>
+        <div class="work__study" aria-hidden="true"><svg class="study" viewBox="0 0 260 130" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet"><polygon pathLength="100" points="44.7,41.5 44.7,58.5 30.0,67.0 15.3,58.5 15.3,41.5 30.0,33.0"/><path pathLength="100" d="M 47 50 L 53 50"/><polygon pathLength="100" points="84.7,41.5 84.7,58.5 70.0,67.0 55.3,58.5 55.3,41.5 70.0,33.0"/><path pathLength="100" d="M 87 50 L 93 50"/><polygon pathLength="100" points="124.7,41.5 124.7,58.5 110.0,67.0 95.3,58.5 95.3,41.5 110.0,33.0"/><path pathLength="100" d="M 127 50 L 133 50"/><polygon pathLength="100" points="164.7,41.5 164.7,58.5 150.0,67.0 135.3,58.5 135.3,41.5 150.0,33.0"/><path pathLength="100" d="M 167 50 L 173 50"/><polygon pathLength="100" points="204.7,41.5 204.7,58.5 190.0,67.0 175.3,58.5 175.3,41.5 190.0,33.0"/><path pathLength="100" d="M 207 50 L 213 50"/><polygon pathLength="100" points="244.7,41.5 244.7,58.5 230.0,67.0 215.3,58.5 215.3,41.5 230.0,33.0"/><path pathLength="100" d="M 150 67 L 150 96"/><path pathLength="100" d="M 122 96 L 178 96 L 178 118 L 122 118 Z"/><path pathLength="100" d="M 160 103 L 172 103"/></svg></div>
+        <h3 class="work__title" data-t="projects.items.2.name">Ethereum-Style Blockchain Platform</h3>
+        <p class="work__blurb" data-t="projects.items.2.blurb">A decentralized finance platform modeled on Ethereum — transaction validation, wallet management and secure APIs, delivered with a multinational team.</p>
+        <dl class="label">
+          <dt><span data-t="plateLabel.client">Client</span></dt><dd class="mono" dir="ltr">GTA Startup</dd>
+          <dt><span data-t="plateLabel.date">Date</span></dt><dd class="mono"><bdi data-t="projects.items.2.period">2024 · Turkey</bdi></dd>
+          <dt><span data-t="plateLabel.stack">Stack</span></dt><dd class="mono" dir="ltr">dApps · Smart Contracts · Wallets · Token Standards · APIs</dd>
+        </dl>
+        <ul class="work__points">
+          <li><span data-t="projects.items.2.highlights.0">Core modules for transaction validation and wallet management</span></li>
+          <li><span data-t="projects.items.2.highlights.1">Token standards implemented to blockchain security best practice</span></li>
+          <li><span data-t="projects.items.2.highlights.2">Performance monitoring and automated testing added for scale</span></li>
+        </ul>
+      </article>
+      <article class="work" style="--span:5 / content-end; --i:3">
+        <span class="work__ghost" aria-hidden="true">04</span>
+        <div class="work__study" aria-hidden="true"><svg class="study" viewBox="0 0 260 130" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet"><path pathLength="100" d="M 40 16 L 40 118"/><path pathLength="100" d="M 40 22 L 98 22"/><path pathLength="100" d="M 40 34 L 74 34"/><path pathLength="100" d="M 40 46 L 116 46"/><path pathLength="100" d="M 40 58 L 84 58"/><path pathLength="100" d="M 40 70 L 130 70"/><path pathLength="100" d="M 40 82 L 70 82"/><path pathLength="100" d="M 40 94 L 106 94"/><path pathLength="100" d="M 40 106 L 90 106"/><path pathLength="100" d="M 40 118 L 80 118"/><path pathLength="100" d="M 24 92 L 236 40" stroke-dasharray="4 3"/><path pathLength="100" d="M 24 118 L 236 118"/></svg></div>
+        <h3 class="work__title" data-t="projects.items.3.name">Broker Trading Tools &amp; MT4 Integration</h3>
+        <p class="work__blurb" data-t="projects.items.3.blurb">High-performance trading software giving brokers real-time prices and profit-and-loss control, wired into MetaTrader 4 through Equiti&#x27;s proprietary tools.</p>
+        <dl class="label">
+          <dt><span data-t="plateLabel.client">Client</span></dt><dd class="mono" dir="ltr">Equiti JO</dd>
+          <dt><span data-t="plateLabel.date">Date</span></dt><dd class="mono"><bdi data-t="projects.items.3.period">2019 — 2022 · Amman</bdi></dd>
+          <dt><span data-t="plateLabel.stack">Stack</span></dt><dd class="mono" dir="ltr">MetaTrader 4 · Real-Time Pricing · P&amp;L · Fintech · Testing</dd>
+        </dl>
+        <ul class="work__points">
+          <li><span data-t="projects.items.3.highlights.0">Real-time price display and profit-and-loss management for brokers</span></li>
+          <li><span data-t="projects.items.3.highlights.1">MT4 integration that streamlined trading workflows</span></li>
+          <li><span data-t="projects.items.3.highlights.2">Trader-facing tools designed, built and rigorously tested</span></li>
+        </ul>
+      </article>
+  </section>
+
+  <!-- ============================ 03 EXPERIENCE ============================= -->
+  <section id="experience" class="sheet" aria-labelledby="h-exp">
+      <header class="sect-head">
+        <span class="sect-num micro" data-num-en="03" data-num-ar="٣" aria-hidden="true"></span>
+        <span class="eyebrow micro" data-t="experience.kicker">Timeline</span>
+        <h2 data-t="experience.title" id="h-exp">Six roles, newest first</h2>
+      </header>
+
+    <div class="ledger">
+      <details class="role is-current" open style="--i:0">
+        <summary class="role__row">
+          <span class="role__years mono"><bdi data-t="experience.items.0.period">Feb 2026 — Present</bdi></span>
+          <span class="role__co" data-t="experience.items.0.company">Skyline</span>
+          <span class="role__title" data-t="experience.items.0.role">Software Engineer</span>
+          <span class="role__flag micro"><span data-t="ui.current">Current</span></span>
+          <svg class="role__chev" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M4 2 L8 6 L4 10" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </summary>
+        <div class="role__body">
+          <div class="role__inner">
+            <p class="role__headline"><span data-t="experience.items.0.headline">Accounting modernization &amp; ERP support</span></p>
+            <ul class="role__points">
+              <li><span data-t="experience.items.0.bullets.0">Leading the modernization of a legacy VB6 accounting system, re-engineering it onto a modern .NET and Angular architecture.</span></li>
+              <li><span data-t="experience.items.0.bullets.1">Designed and built a maintenance management system shaped around the client&#x27;s specific operational requirements.</span></li>
+              <li><span data-t="experience.items.0.bullets.2">Resolve critical issues across the company&#x27;s ERP platform and provide ongoing support that keeps it stable.</span></li>
+            </ul>
+            <ul class="tags"><li class="tag" dir="ltr">.NET</li><li class="tag" dir="ltr">Angular</li><li class="tag" dir="ltr">VB6</li><li class="tag" dir="ltr">ERP</li><li class="tag" dir="ltr">Modernization</li></ul>
+          </div>
+        </div>
+      </details>
+      <details class="role" style="--i:1">
+        <summary class="role__row">
+          <span class="role__years mono"><bdi data-t="experience.items.1.period">Sep 2025 — Feb 2026</bdi></span>
+          <span class="role__co" data-t="experience.items.1.company">ACS-Tech</span>
+          <span class="role__title" data-t="experience.items.1.role">Software Engineer</span>
+          <svg class="role__chev" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M4 2 L8 6 L4 10" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </summary>
+        <div class="role__body">
+          <div class="role__inner">
+            <p class="role__headline"><span data-t="experience.items.1.headline">Car rental ERP platform (.NET Core)</span></p>
+            <ul class="role__points">
+              <li><span data-t="experience.items.1.bullets.0">Built and maintained a comprehensive Car Rental ERP in .NET Core to streamline rental operations and fleet management.</span></li>
+              <li><span data-t="experience.items.1.bullets.1">Delivered core modules for vehicle reservations, rental agreements, invoicing and customer relationship management.</span></li>
+              <li><span data-t="experience.items.1.bullets.2">Architected a scalable multi-branch solution that supports high transaction volumes and concurrent operations.</span></li>
+              <li><span data-t="experience.items.1.bullets.3">Integrated secure payment gateways and third-party APIs for real-time vehicle tracking and reporting.</span></li>
+              <li><span data-t="experience.items.1.bullets.4">Raised system performance through asynchronous programming, strategic caching and database query optimization.</span></li>
+              <li><span data-t="experience.items.1.bullets.5">Worked directly with product managers and clients so ERP features matched business objectives precisely.</span></li>
+            </ul>
+            <ul class="tags"><li class="tag" dir="ltr">.NET Core</li><li class="tag" dir="ltr">C#</li><li class="tag" dir="ltr">ERP</li><li class="tag" dir="ltr">Payments</li><li class="tag" dir="ltr">APIs</li><li class="tag" dir="ltr">Caching</li></ul>
+          </div>
+        </div>
+      </details>
+      <details class="role" style="--i:2">
+        <summary class="role__row">
+          <span class="role__years mono"><bdi data-t="experience.items.2.period">Mar 2024 — Dec 2024</bdi></span>
+          <span class="role__co" data-t="experience.items.2.company">GTA Startup</span>
+          <span class="role__title" data-t="experience.items.2.role">Software Engineer</span>
+          <svg class="role__chev" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M4 2 L8 6 L4 10" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </summary>
+        <div class="role__body">
+          <div class="role__inner">
+            <p class="role__headline"><span data-t="experience.items.2.headline">Ethereum-like cryptocurrency platform</span> <span class="role__sep" aria-hidden="true">·</span> <span class="role__loc"><span data-t="experience.items.2.location">Turkey</span></span></p>
+            <ul class="role__points">
+              <li><span data-t="experience.items.2.bullets.0">Contributed to a blockchain finance platform modeled on Ethereum, focused on dApps and smart contract integration.</span></li>
+              <li><span data-t="experience.items.2.bullets.1">Designed and optimized core modules for transaction validation, wallet management and secure API communication.</span></li>
+              <li><span data-t="experience.items.2.bullets.2">Implemented token standards with a multinational team while upholding blockchain security best practices.</span></li>
+              <li><span data-t="experience.items.2.bullets.3">Introduced performance monitoring and automated testing frameworks, strengthening scalability and reliability.</span></li>
+              <li><span data-t="experience.items.2.bullets.4">Aligned product functionality with real-world financial use cases to support the startup&#x27;s go-to-market strategy.</span></li>
+            </ul>
+            <ul class="tags"><li class="tag" dir="ltr">Blockchain</li><li class="tag" dir="ltr">dApps</li><li class="tag" dir="ltr">Smart Contracts</li><li class="tag" dir="ltr">Wallets</li><li class="tag" dir="ltr">APIs</li></ul>
+          </div>
+        </div>
+      </details>
+      <details class="role" style="--i:3">
+        <summary class="role__row">
+          <span class="role__years mono"><bdi data-t="experience.items.3.period">May 2019 — Oct 2022</bdi></span>
+          <span class="role__co" data-t="experience.items.3.company">Equiti JO</span>
+          <span class="role__title" data-t="experience.items.3.role">Software Engineer</span>
+          <svg class="role__chev" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M4 2 L8 6 L4 10" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </summary>
+        <div class="role__body">
+          <div class="role__inner">
+            <p class="role__headline"><span data-t="experience.items.3.headline">Financial trading technology</span> <span class="role__sep" aria-hidden="true">·</span> <span class="role__loc"><span data-t="experience.items.3.location">Amman, Jordan</span></span></p>
+            <ul class="role__points">
+              <li><span data-t="experience.items.3.bullets.0">Developed a high-performance trading application that showed brokers real-time prices and managed profit and loss efficiently.</span></li>
+              <li><span data-t="experience.items.3.bullets.1">Integrated Equiti&#x27;s proprietary tools with MetaTrader 4, streamlining trading workflows and expanding platform capability.</span></li>
+              <li><span data-t="experience.items.3.bullets.2">Designed, built and rigorously tested trader-facing tools that lifted user experience and operational efficiency.</span></li>
+            </ul>
+            <ul class="tags"><li class="tag" dir="ltr">Trading</li><li class="tag" dir="ltr">MetaTrader 4</li><li class="tag" dir="ltr">Real-Time Data</li><li class="tag" dir="ltr">Fintech</li></ul>
+          </div>
+        </div>
+      </details>
+      <details class="role" style="--i:4">
+        <summary class="role__row">
+          <span class="role__years mono"><bdi data-t="experience.items.4.period">Mar 2018 — Sep 2018</bdi></span>
+          <span class="role__co" data-t="experience.items.4.company">Aspire Services</span>
+          <span class="role__title" data-t="experience.items.4.role">Software Engineer</span>
+          <svg class="role__chev" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M4 2 L8 6 L4 10" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </summary>
+        <div class="role__body">
+          <div class="role__inner">
+            <p class="role__headline"><span data-t="experience.items.4.headline">Test automation tooling</span> <span class="role__sep" aria-hidden="true">·</span> <span class="role__loc"><span data-t="experience.items.4.location">Amman, Jordan</span></span></p>
+            <ul class="role__points">
+              <li><span data-t="experience.items.4.bullets.0">Engineered a custom tool that turned QA-authored test cases into executable scripts, cutting manual effort and speeding releases.</span></li>
+              <li><span data-t="experience.items.4.bullets.1">Authored comprehensive test cases and scenarios in that in-house tool, holding quality high across client software.</span></li>
+              <li><span data-t="experience.items.4.bullets.2">Generated dynamic reports from automated test results, surfacing insight into software performance and quality assurance.</span></li>
+            </ul>
+            <ul class="tags"><li class="tag" dir="ltr">Test Automation</li><li class="tag" dir="ltr">QA Tooling</li><li class="tag" dir="ltr">Reporting</li></ul>
+          </div>
+        </div>
+      </details>
+      <details class="role" style="--i:5">
+        <summary class="role__row">
+          <span class="role__years mono"><bdi data-t="experience.items.5.period">Jan 2017 — Mar 2018</bdi></span>
+          <span class="role__co" data-t="experience.items.5.company">Aspire Infotech</span>
+          <span class="role__title" data-t="experience.items.5.role">Software Engineer</span>
+          <svg class="role__chev" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M4 2 L8 6 L4 10" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </summary>
+        <div class="role__body">
+          <div class="role__inner">
+            <p class="role__headline"><span data-t="experience.items.5.headline">Client tools &amp; analytics</span> <span class="role__sep" aria-hidden="true">·</span> <span class="role__loc"><span data-t="experience.items.5.location">Amman, Jordan</span></span></p>
+            <ul class="role__points">
+              <li><span data-t="experience.items.5.bullets.0">Developed and maintained administrative tools for a diverse client base, improving operational efficiency and client management.</span></li>
+              <li><span data-t="experience.items.5.bullets.1">Built advanced analytics tools with US-based teams, delivering data-driven insight that supported strategic decisions.</span></li>
+              <li><span data-t="experience.items.5.bullets.2">Revamped and maintained client websites for better performance, security and a refined user experience.</span></li>
+            </ul>
+            <ul class="tags"><li class="tag" dir="ltr">Admin Tools</li><li class="tag" dir="ltr">Analytics</li><li class="tag" dir="ltr">Web</li></ul>
+          </div>
+        </div>
+      </details>
     </div>
   </section>
 
-  <!-- ============ ABOUT ============ -->
-  <section id="about">
-    <div class="wrap reveal">
-      <div class="section-head">
-        <span class="section-kicker" data-i18n="about.kicker">a little</span>
-        <h2 class="section-title" data-i18n="about.title">About me
-          <svg viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 C 60 2, 120 12, 180 6 S 260 2, 298 7"/></svg>
-        </h2>
-      </div>
-      <div class="about-grid">
-        <div class="about-body">
-          <p class="about-lead" data-i18n="about.lead">Software Engineer with 8+ years designing, developing and optimizing enterprise-grade applications.</p>
-          <p data-i18n="about.p1">My work spans the fintech, blockchain and ERP domains — specialized in .NET Core and C#, with a proven record of delivering scalable, high-performance systems for real-time financial trading, decentralized platforms and multi-branch business operations.</p>
-          <p data-i18n="about.p2">I'm skilled at translating complex business requirements into robust technical solutions and collaborating effectively within cross-functional, multinational teams.</p>
+  <!-- ============================== 04 SKILLS =============================== -->
+  <section id="skills" class="sheet" aria-labelledby="h-skills">
+      <header class="sect-head">
+        <span class="sect-num micro" data-num-en="04" data-num-ar="٤" aria-hidden="true"></span>
+        <span class="eyebrow micro" data-t="skills.kicker">Stack</span>
+        <h2 data-t="skills.title" id="h-skills">What I build with</h2>
+      </header>
+
+    <div class="index">
+        <div class="group" style="--i:0">
+          <p class="group__head"><span class="group__num mono" aria-hidden="true">01</span><span class="group__name micro" data-t="skills.groups.0.name">Programming Languages</span></p>
+          <p class="group__items"><span class="skill" dir="ltr">C#</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Java</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">JavaScript</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">SQL</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">HTML</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">CSS</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">C++</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">C</span></p>
         </div>
-        <ul class="stats stagger" id="stats"></ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ SKILLS ============ -->
-  <section id="skills">
-    <div class="wrap reveal">
-      <div class="section-head">
-        <span class="section-kicker" data-i18n="skills.kicker">my</span>
-        <h2 class="section-title" data-i18n="skills.title">Toolbox
-          <svg viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 C 60 2, 120 12, 180 6 S 260 2, 298 7"/></svg>
-        </h2>
-      </div>
-      <div class="skills-grid stagger" id="skillsGrid"></div>
-    </div>
-  </section>
-
-  <!-- ============ PROJECTS ============ -->
-  <section id="projects">
-    <div class="wrap reveal">
-      <div class="section-head">
-        <span class="section-kicker" data-i18n="projects.kicker">things I've</span>
-        <h2 class="section-title" data-i18n="projects.title">Built
-          <svg viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 C 60 2, 120 12, 180 6 S 260 2, 298 7"/></svg>
-        </h2>
-      </div>
-      <div class="projects-grid stagger" id="projectsGrid"></div>
-    </div>
-  </section>
-
-  <!-- ============ EXPERIENCE ============ -->
-  <section id="experience">
-    <div class="wrap reveal">
-      <div class="section-head">
-        <span class="section-kicker" data-i18n="exp.kicker">where I've</span>
-        <h2 class="section-title" data-i18n="exp.title">Experience
-          <svg viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 C 60 2, 120 12, 180 6 S 260 2, 298 7"/></svg>
-        </h2>
-      </div>
-      <ol class="timeline" id="timeline"></ol>
-    </div>
-  </section>
-
-  <!-- ============ EDUCATION ============ -->
-  <section id="education">
-    <div class="wrap reveal">
-      <div class="section-head">
-        <span class="section-kicker" data-i18n="edu.kicker">how I</span>
-        <h2 class="section-title" data-i18n="edu.title">Education
-          <svg viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 C 60 2, 120 12, 180 6 S 260 2, 298 7"/></svg>
-        </h2>
-      </div>
-      <div id="education-card"></div>
-    </div>
-  </section>
-
-  <!-- ============ CONTACT ============ -->
-  <section id="contact">
-    <div class="wrap reveal contact">
-      <div class="section-head" style="text-align:center">
-        <span class="section-kicker" data-i18n="contact.kicker">say</span>
-        <h2 class="section-title" data-i18n="contact.title">Hello
-          <svg viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 C 60 2, 120 12, 180 6 S 260 2, 298 7"/></svg>
-        </h2>
-      </div>
-      <p class="contact__lead" data-i18n="contact.lead">Open to opportunities and collaboration. Let's build something reliable together.</p>
-      <div class="contact__grid">
-        <a class="contact__card" href="mailto:Nader.7.samir@gmail.com">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-          <span><b data-i18n="contact.email">Email</b><span>Nader.7.samir@gmail.com</span></span>
-        </a>
-        <a class="contact__card" href="tel:+962777690484" dir="ltr">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.5-1.1a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></svg>
-          <span><b data-i18n="contact.phone" dir="auto">Phone</b><span>+962 7 7769 0484</span></span>
-        </a>
-        <div class="contact__card">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span><b data-i18n="contact.location">Location</b><span data-i18n="hero.location">Amman, Jordan</span></span>
+        <div class="group" style="--i:1">
+          <p class="group__head"><span class="group__num mono" aria-hidden="true">02</span><span class="group__name micro" data-t="skills.groups.1.name">Frameworks &amp; Libraries</span></p>
+          <p class="group__items"><span class="skill" dir="ltr">.NET Core</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">ASP.NET</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Spring Boot</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Angular</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">SignalR</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Razor</span></p>
         </div>
-        <a class="contact__card" href="https://github.com/NaderAlsouqi" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.5 18 4.8 18 4.8c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
-          <span><b>GitHub</b><span dir="ltr">@NaderAlsouqi</span></span>
-        </a>
-        <a class="contact__card" href="https://www.linkedin.com/in/nader-alsouqi-269789335/" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
-          <span><b>LinkedIn</b><span dir="ltr">nader-alsouqi</span></span>
-        </a>
-      </div>
-      <a class="btn btn--solid" href="assets/Nader_Samir_Alsouqi_CV.pdf" download>
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
-        <span data-i18n="hero.cv">Download CV</span>
-      </a>
+        <div class="group" style="--i:2">
+          <p class="group__head"><span class="group__num mono" aria-hidden="true">03</span><span class="group__name micro" data-t="skills.groups.2.name">Databases</span></p>
+          <p class="group__items"><span class="skill" dir="ltr">Microsoft SQL Server</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">MySQL</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Redis</span></p>
+        </div>
+        <div class="group" style="--i:3">
+          <p class="group__head"><span class="group__num mono" aria-hidden="true">04</span><span class="group__name micro" data-t="skills.groups.3.name">Protocols</span></p>
+          <p class="group__items"><span class="skill" dir="ltr">HTTP</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">TCP</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">UDP</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">SOAP</span></p>
+        </div>
+        <div class="group" style="--i:4">
+          <p class="group__head"><span class="group__num mono" aria-hidden="true">05</span><span class="group__name micro" data-t="skills.groups.4.name">Tools &amp; Platforms</span></p>
+          <p class="group__items"><span class="skill" dir="ltr">Visual Studio</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Git</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">RabbitMQ</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">JMeter</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">MetaTrader</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">cTrader</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">cAlgo</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Android Studio</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Eclipse</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">NetBeans</span></p>
+        </div>
+        <div class="group" style="--i:5">
+          <p class="group__head"><span class="group__num mono" aria-hidden="true">06</span><span class="group__name micro" data-t="skills.groups.5.name">Design Patterns</span></p>
+          <p class="group__items"><span class="skill" dir="ltr">Builder</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Repository</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Factory</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Proxy</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">MVC</span></p>
+        </div>
+        <div class="group" style="--i:6">
+          <p class="group__head"><span class="group__num mono" aria-hidden="true">07</span><span class="group__name micro" data-t="skills.groups.6.name">Core Concepts</span></p>
+          <p class="group__items"><span class="skill" dir="ltr">SDLC</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Software Testing</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Requirements Engineering</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Automated Testing</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Financial Applications</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Real-Time Data Processing</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Data Analytics</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Web Development</span></p>
+        </div>
     </div>
+  </section>
+
+  <!-- ====================== 05 EDUCATION & CONTACT ========================== -->
+  <section id="contact" class="sheet" aria-labelledby="h-contact">
+      <header class="sect-head">
+        <span class="sect-num micro" data-num-en="05" data-num-ar="٥" aria-hidden="true"></span>
+        <span class="eyebrow micro" data-t="contact.kicker">Contact</span>
+        <h2 data-t="contact.title" id="h-contact">Let&#x27;s talk</h2>
+      </header>
+
+    <div class="edu">
+      <p class="edu__kicker micro"><span data-t="education.kicker">Foundation</span></p>
+      <h3 class="edu__degree" data-t="education.degree">Bachelor of Software Engineering</h3>
+      <dl class="label">
+        <dt><span data-t="education.title">Where it started</span></dt><dd><span data-t="education.school">Jordan University of Science and Technology</span></dd>
+        <dt><span data-t="specimen.location">Location</span></dt><dd><span data-t="education.place">Ar Ramtha, Jordan</span></dd>
+      </dl>
+      <p class="edu__note" data-t="education.note">A formal software engineering degree — the base for eight-plus years of enterprise work across fintech, blockchain and ERP.</p>
+    </div>
+
+    <div class="reach">
+      <p class="reach__lead" data-t="contact.lead">Open to engineering roles and collaboration — fintech, ERP, or anything that has to stay correct under load.</p>
+      <ul class="reach__list">
+        <li><a class="link reach__line" href="mailto:Nader.7.samir@gmail.com"><span class="reach__key micro"><span data-t="contact.emailLabel">Email</span></span><bdi dir="ltr">Nader.7.samir@gmail.com</bdi></a></li>
+        <li><a class="link reach__line" href="tel:+962777690484"><span class="reach__key micro"><span data-t="contact.phoneLabel">Phone</span></span><bdi dir="ltr">+962 7 7769 0484</bdi></a></li>
+        <li><a class="link reach__line" href="https://github.com/NaderAlsouqi" target="_blank" rel="noopener noreferrer"><span class="reach__key micro"><span data-t="ui.github">GitHub</span></span><bdi dir="ltr">@NaderAlsouqi</bdi></a></li>
+        <li><a class="link reach__line" href="https://www.linkedin.com/in/nader-alsouqi-269789335/" target="_blank" rel="noopener noreferrer"><span class="reach__key micro"><span data-t="ui.linkedin">LinkedIn</span></span><bdi dir="ltr">nader-alsouqi</bdi></a></li>
+      </ul>
+      <p class="reach__actions">
+        <a class="link link--cta" href="assets/Nader_Samir_Alsouqi_CV.pdf" download><span data-t="contact.cvLabel">Download CV</span> <span aria-hidden="true">↓</span></a>
+        <button class="link link--cta" id="copyBtn" type="button" data-email="Nader.7.samir@gmail.com"><span data-t="ui.copyEmail">Copy email</span></button>
+      </p>
+      <p class="reach__status micro" id="copyStatus" role="status" aria-live="polite"></p>
+    </div>
+
+    <p class="colophon micro" data-t="captions.colophon">Typeset in Fraunces, Source Serif 4, IBM Plex Mono, Reem Kufi and IBM Plex Sans Arabic. Value ramp sampled from the drawing: 100% achromatic, paper #FFFFFF across 83% of the frame, mean deposit #BCBCBC, darkest mark #363636. Sanguine is an added ink. Hand-written HTML, CSS and JavaScript. No frameworks, no build step. Amman, 2026.</p>
   </section>
 </main>
 
-<footer class="footer">
-  <div class="wrap">
-    <div class="brand"><span class="brand__mark">N</span> <span data-i18n="hero.name">Nader Samir Alsouqi</span></div>
-    <p data-i18n="footer.text">Built with care — pencil, paper &amp; a lot of C#.</p>
-    <p style="opacity:.7">© <span id="year">2026</span> Nader Samir Alsouqi</p>
+<footer class="footer" role="contentinfo">
+  <div class="wedge wedge--footer" aria-hidden="true"></div>
+  <div class="footer__inner sheet micro">
+    <p class="footer__line"><span data-t="ui.footerLine">Hand-built: plain HTML, CSS and JavaScript. No frameworks, no build step.</span></p>
+    <p class="footer__meta mono">
+      <span data-t="hero.name">Nader Samir Alsouqi</span>
+      <span class="dot" aria-hidden="true">·</span>
+      <span data-t="hero.location">Amman, Jordan</span>
+      <span class="dot" aria-hidden="true">·</span>
+      <bdi>2026</bdi>
+    </p>
   </div>
 </footer>
 
-<script src="script.js" defer></script>
+<script src="content.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

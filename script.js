@@ -1,482 +1,371 @@
-/* ============================================================
-   Nader Samir Alsouqi — Portfolio logic
-   - Bilingual EN / AR with full RTL
-   - Theme (paper / blackboard) toggle
-   - Data-driven experience / skills / education render
-   - Scroll reveal, active nav, mobile menu
-   ============================================================ */
+/* ==========================================================================
+   Recto / Verso — behaviour
+   Plain ES2019. No frameworks, no build step.
+
+   The English copy is already in index.html, so the page is complete with
+   JavaScript disabled. This file adds: the Arabic/English swap, the theme,
+   the scroll reveals, and a handful of small interactions.
+   ========================================================================== */
 (function () {
-  "use strict";
+  'use strict';
 
-  /* ---------------- UI strings ---------------- */
-  var UI = {
-    en: {
-      "brand": "Nader",
-      "nav.about": "About", "nav.skills": "Skills", "nav.projects": "Projects", "nav.experience": "Experience",
-      "nav.education": "Education", "nav.contact": "Contact",
-      "hero.eyebrow": "Hi, I'm",
-      "hero.name": "Nader Samir Alsouqi",
-      "hero.role": "Software Engineer",
-      "hero.exp": "8+ years",
-      "hero.tagline": "I build scalable, high-performance systems for fintech, blockchain and ERP — turning complex business requirements into robust, real-world software.",
-      "hero.cv": "Download CV",
-      "hero.contact": "Get in touch",
-      "hero.location": "Amman, Jordan",
-      "hero.tag": "Software Engineer",
-      "about.kicker": "a little", "about.title": "About me",
-      "about.lead": "Software Engineer with 8+ years designing, developing and optimizing enterprise-grade applications.",
-      "about.p1": "My work spans the fintech, blockchain and ERP domains — specialized in .NET Core and C#, with a proven record of delivering scalable, high-performance systems for real-time financial trading, decentralized platforms and multi-branch business operations.",
-      "about.p2": "I'm skilled at translating complex business requirements into robust technical solutions and collaborating effectively within cross-functional, multinational teams.",
-      "skills.kicker": "my", "skills.title": "Toolbox",
-      "projects.kicker": "things I've", "projects.title": "Built",
-      "exp.kicker": "where I've", "exp.title": "Experience",
-      "edu.kicker": "how I", "edu.title": "Education",
-      "contact.kicker": "say", "contact.title": "Hello",
-      "contact.lead": "Open to opportunities and collaboration. Let's build something reliable together.",
-      "contact.email": "Email", "contact.phone": "Phone", "contact.location": "Location",
-      "footer.text": "Built with care — pencil, paper & a lot of C#.",
-      "role": "Software Engineer"
-    },
-    ar: {
-      "brand": "نادر",
-      "nav.about": "نبذة", "nav.skills": "المهارات", "nav.projects": "المشاريع", "nav.experience": "الخبرات",
-      "nav.education": "التعليم", "nav.contact": "تواصل",
-      "hero.eyebrow": "مرحبًا، أنا",
-      "hero.name": "نادر سمير السوقي",
-      "hero.role": "مهندس برمجيات",
-      "hero.exp": "أكثر من 8 سنوات",
-      "hero.tagline": "أُصمّم أنظمة قابلة للتوسّع وعالية الأداء في مجالات التكنولوجيا المالية والبلوك تشين وأنظمة تخطيط موارد المؤسسات، محوّلًا متطلبات العمل المعقّدة إلى برمجيات متينة تخدم الواقع.",
-      "hero.cv": "تحميل السيرة الذاتية",
-      "hero.contact": "تواصل معي",
-      "hero.location": "عمّان، الأردن",
-      "hero.tag": "مهندس برمجيات",
-      "about.kicker": "نبذة", "about.title": "من أنا",
-      "about.lead": "مهندس برمجيات يمتلك أكثر من 8 سنوات من الخبرة في تصميم وتطوير وتحسين تطبيقات على مستوى المؤسسات.",
-      "about.p1": "تمتدّ أعمالي عبر مجالات التكنولوجيا المالية والبلوك تشين وأنظمة تخطيط موارد المؤسسات (ERP)، مع تخصّص في ‎.NET Core وC#‎، وسجلّ حافل في تسليم أنظمة قابلة للتوسّع وعالية الأداء للتداول المالي في الوقت الفعلي والمنصّات اللامركزية والعمليات التجارية متعددة الفروع.",
-      "about.p2": "أمتلك القدرة على ترجمة متطلبات العمل المعقّدة إلى حلول تقنية متينة، والتعاون بفاعلية ضمن فرق متعددة التخصصات ومتعددة الجنسيات.",
-      "skills.kicker": "أدواتي", "skills.title": "المهارات التقنية",
-      "projects.kicker": "أعمال", "projects.title": "مختارة",
-      "exp.kicker": "مسيرتي", "exp.title": "الخبرات المهنية",
-      "edu.kicker": "دراستي", "edu.title": "التعليم",
-      "contact.kicker": "قل", "contact.title": "مرحبًا",
-      "contact.lead": "منفتح على الفرص والتعاون. لنبنِ معًا شيئًا موثوقًا.",
-      "contact.email": "البريد الإلكتروني", "contact.phone": "الهاتف", "contact.location": "الموقع",
-      "footer.text": "صُنع بعناية — قلم رصاص وورقة والكثير من ‎C#‎.",
-      "role": "مهندس برمجيات"
+  var root = document.documentElement;
+  var C = window.CONTENT || {};
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  /* FIRST, before anything that could throw. The reveal styles start at
+     opacity 0 and only the .is-in class brings them back, so this pair is
+     what guarantees the page can never be left blank by a later error. */
+  var allSections = document.querySelectorAll('main > section');
+  var heroSection = document.getElementById('hero');
+  if (heroSection) heroSection.classList.add('is-in');
+  setTimeout(function () {
+    for (var i = 0; i < allSections.length; i++) allSections[i].classList.add('is-in');
+  }, 3000);
+
+  /* ---------------------------------------------------------------- utils */
+
+  function get(path) {
+    var parts = String(path).split('.');
+    var cur = C;
+    for (var i = 0; i < parts.length; i++) {
+      if (cur == null) return null;
+      cur = cur[parts[i]];
     }
-  };
+    return cur;
+  }
 
-  /* ---------------- Data ---------------- */
-  var STATS = [
-    { num: "8<span>+</span>", label: { en: "Years of experience", ar: "سنوات الخبرة" } },
-    { num: "7", label: { en: "Companies & teams", ar: "شركات وفِرق عمل" } },
-    { num: "3", label: { en: "Industry domains", ar: "قطاعات صناعية" } },
-    { num: "20<span>+</span>", label: { en: "Technologies & tools", ar: "تقنيات وأدوات" } }
-  ];
+  function str(path, lang) {
+    var v = get(path);
+    if (v == null) return '';
+    return typeof v === 'string' ? v : (v[lang] || v.en || '');
+  }
 
-  var SKILLS = [
-    { title: { en: "Programming Languages", ar: "لغات البرمجة" },
-      items: ["C#", "Java", "JavaScript", "SQL", "HTML", "CSS", "C++", "C"] },
-    { title: { en: "Frameworks & Libraries", ar: "أُطر العمل والمكتبات" },
-      items: ["ASP.NET", ".NET Core", "Spring Boot", "Angular", "SignalR", "Razor"] },
-    { title: { en: "Databases", ar: "قواعد البيانات" },
-      items: ["Microsoft SQL Server", "MySQL", "Redis"] },
-    { title: { en: "Protocols", ar: "البروتوكولات" },
-      items: ["HTTP", "TCP", "UDP", "SOAP"] },
-    { title: { en: "Tools & Platforms", ar: "الأدوات والمنصّات" },
-      items: ["Visual Studio", "Git", "RabbitMQ", "JMeter", "MetaTrader", "cTrader", "cAlgo", "Android Studio", "Eclipse", "NetBeans"] },
-    { title: { en: "Concepts & Patterns", ar: "المفاهيم وأنماط التصميم" },
-      items: ["SDLC", "Automated Testing", "Requirements Engineering", "Real-Time Data", "Data Analytics", "Repository", "Factory", "MVC", "Builder", "Proxy"] }
-  ];
-
-  var PROJECTS = [
-    {
-      domain: { en: "ERP", ar: "أنظمة ERP" },
-      title: { en: "Car Rental ERP Platform", ar: "منصّة ERP لتأجير السيارات" },
-      meta: { en: "ACS-Tech · 2025–2026", ar: "ACS-Tech · 2025–2026" },
-      desc: {
-        en: "A scalable, multi-branch car-rental ERP in .NET Core — reservations, rental agreements, invoicing and CRM, with integrated payment gateways and real-time vehicle tracking, tuned for high transaction volumes.",
-        ar: "نظام ERP قابل للتوسّع متعدد الفروع لتأجير السيارات بلغة ‎.NET Core — يشمل الحجوزات وعقود التأجير والفوترة وإدارة علاقات العملاء، مع بوابات دفع مدمجة وتتبّع للمركبات في الوقت الفعلي، ومهيّأ لأحجام معاملات كبيرة."
-      },
-      stack: [".NET Core", "C#", "SQL Server", "Payments", "REST APIs"]
-    },
-    {
-      domain: { en: "Blockchain", ar: "بلوك تشين" },
-      title: { en: "Ethereum-like Crypto Platform", ar: "منصّة عملة رقمية شبيهة بالإيثيريوم" },
-      meta: { en: "GTA Startup · 2024 · Turkey", ar: "GTA Startup · 2024 · تركيا" },
-      desc: {
-        en: "Core modules for a blockchain financial platform modeled on Ethereum — transaction validation, wallet management and secure API communication, with token standards, performance monitoring and automated testing.",
-        ar: "الوحدات الأساسية لمنصّة مالية قائمة على البلوك تشين ومستوحاة من الإيثيريوم — التحقق من المعاملات وإدارة المحافظ والتواصل الآمن عبر الواجهات البرمجية، مع معايير الرموز ومراقبة الأداء والاختبار الآلي."
-      },
-      stack: ["Blockchain", "Smart Contracts", "dApps", "C#", "APIs"]
-    },
-    {
-      domain: { en: "Fintech", ar: "تقنية مالية" },
-      title: { en: "Financial Trading Platform", ar: "منصّة تداول مالي" },
-      meta: { en: "Equiti · 2019–2022 · Amman", ar: "Equiti · 2019–2022 · عمّان" },
-      desc: {
-        en: "High-performance trading tools for brokers — real-time pricing and profit/loss management, integrated with MetaTrader 4 (MT4) to streamline trading workflows and lift operational efficiency.",
-        ar: "أدوات تداول عالية الأداء للوسطاء — تسعير في الوقت الفعلي وإدارة الأرباح والخسائر، مدمجة مع منصّة MetaTrader 4 (MT4) لتبسيط سير عمل التداول ورفع الكفاءة التشغيلية."
-      },
-      stack: ["C#", ".NET", "SignalR", "MT4", "Real-Time Data"]
-    },
-    {
-      domain: { en: "Modernization", ar: "تحديث الأنظمة" },
-      title: { en: "Accounting System Modernization", ar: "تحديث نظام محاسبي" },
-      meta: { en: "Skyline · 2026–Present", ar: "Skyline · 2026 – حتى الآن" },
-      desc: {
-        en: "Re-engineered a legacy VB6 accounting system into a modern .NET + Angular architecture, plus a bespoke maintenance-management module and ongoing, reliability-focused ERP support.",
-        ar: "إعادة هندسة نظام محاسبي قديم مبني بلغة VB6 إلى بنية حديثة قائمة على ‎.NET وAngular، مع وحدة مخصّصة لإدارة الصيانة ودعم مستمر لأنظمة ERP يركّز على الموثوقية."
-      },
-      stack: [".NET", "Angular", "C#", "SQL Server", "ERP"]
-    }
-  ];
-
-  var EXPERIENCE = [
-    {
-      company: "Skyline",
-      dates: { en: "Feb 2026 – Present", ar: "فبراير 2026 – حتى الآن" },
-      project: { en: "Accounting System Modernization & ERP Support", ar: "تحديث نظام محاسبي ودعم أنظمة ERP" },
-      location: { en: "", ar: "" },
-      bullets: {
-        en: [
-          "Spearheaded the modernization of a legacy VB6 accounting system, re-engineering it into a modern architecture built on .NET and Angular.",
-          "Designed and developed a maintenance management system tailored to client-specific operational requirements.",
-          "Provided ongoing support and resolved critical issues across the company's ERP platform, ensuring system stability and reliability."
-        ],
-        ar: [
-          "قُدت عملية تحديث نظام محاسبي قديم مبني بلغة VB6، وأعدت هندسته إلى بنية حديثة قائمة على ‎.NET وAngular.",
-          "صمّمت وطوّرت نظامًا لإدارة الصيانة مُصمّمًا وفق المتطلبات التشغيلية الخاصة بالعميل.",
-          "قدّمت دعمًا مستمرًا وعالجت مشكلات حرجة عبر منصّة ERP الخاصة بالشركة، بما يضمن استقرار النظام وموثوقيته."
-        ]
-      }
-    },
-    {
-      company: "ACS-Tech",
-      dates: { en: "Sep 2025 – Feb 2026", ar: "سبتمبر 2025 – فبراير 2026" },
-      project: { en: "Car Rental ERP Platform (.NET Core)", ar: "منصّة ERP لتأجير السيارات (.NET Core)" },
-      location: { en: "", ar: "" },
-      bullets: {
-        en: [
-          "Developed and maintained a comprehensive Car Rental ERP system in .NET Core, engineered to streamline rental operations and optimize fleet management.",
-          "Built core modules for vehicle reservations, rental agreements, invoicing, and customer relationship management.",
-          "Architected a scalable, multi-branch solution capable of supporting high transaction volumes and concurrent operations.",
-          "Integrated secure payment gateways and third-party APIs to enable real-time vehicle tracking and reporting.",
-          "Improved system performance through asynchronous programming, strategic caching, and database query optimization.",
-          "Partnered closely with product managers and clients to deliver ERP features precisely aligned with business objectives."
-        ],
-        ar: [
-          "طوّرت وصُنت نظام ERP متكاملًا لتأجير السيارات باستخدام ‎.NET Core، مُصمّمًا لتبسيط عمليات التأجير وتحسين إدارة الأسطول.",
-          "بنيت وحداتٍ أساسية لحجوزات المركبات وعقود التأجير والفوترة وإدارة علاقات العملاء.",
-          "صمّمت حلًّا قابلًا للتوسّع متعدد الفروع قادرًا على دعم أحجام معاملات كبيرة وعمليات متزامنة.",
-          "دمجت بوابات دفع آمنة وواجهات برمجية خارجية (APIs) لتمكين تتبّع المركبات وإعداد التقارير في الوقت الفعلي.",
-          "حسّنت أداء النظام عبر البرمجة غير المتزامنة والتخزين المؤقت الاستراتيجي وتحسين استعلامات قاعدة البيانات.",
-          "عملت عن قرب مع مديري المنتجات والعملاء لتسليم ميزات ERP متوافقة تمامًا مع أهداف العمل."
-        ]
-      }
-    },
-    {
-      company: "GTA Startup",
-      dates: { en: "Mar 2024 – Dec 2024", ar: "مارس 2024 – ديسمبر 2024" },
-      project: { en: "Ethereum-like Cryptocurrency Platform", ar: "منصّة عملة رقمية شبيهة بالإيثيريوم" },
-      location: { en: "Turkey", ar: "تركيا" },
-      bullets: {
-        en: [
-          "Contributed to a blockchain-based financial platform modeled on Ethereum, focusing on decentralized applications (dApps) and smart contract integration.",
-          "Designed and optimized core modules for transaction validation, wallet management, and secure API communication.",
-          "Collaborated with a multinational team to implement token standards and uphold blockchain security best practices.",
-          "Strengthened system scalability and reliability by introducing performance monitoring and automated testing frameworks.",
-          "Played a pivotal role in aligning product functionality with real-world financial use cases, supporting the startup's go-to-market strategy in the cryptocurrency sector."
-        ],
-        ar: [
-          "ساهمت في منصّة مالية قائمة على البلوك تشين ومستوحاة من الإيثيريوم، مع التركيز على التطبيقات اللامركزية (dApps) ودمج العقود الذكية.",
-          "صمّمت وحسّنت وحداتٍ أساسية للتحقق من المعاملات وإدارة المحافظ والتواصل الآمن عبر الواجهات البرمجية.",
-          "تعاونت مع فريق متعدد الجنسيات لتطبيق معايير الرموز (Tokens) والالتزام بأفضل ممارسات أمن البلوك تشين.",
-          "عزّزت قابلية توسّع النظام وموثوقيته عبر إدخال مراقبة الأداء وأُطر الاختبار الآلي.",
-          "لعبت دورًا محوريًا في مواءمة وظائف المنتج مع حالات الاستخدام المالية الواقعية، بما يدعم استراتيجية إطلاق الشركة الناشئة في قطاع العملات الرقمية."
-        ]
-      }
-    },
-    {
-      company: "Equiti JO",
-      dates: { en: "May 2019 – Oct 2022", ar: "مايو 2019 – أكتوبر 2022" },
-      project: { en: "Financial Trading Technology", ar: "تقنيات التداول المالي" },
-      location: { en: "Amman, Jordan", ar: "عمّان، الأردن" },
-      bullets: {
-        en: [
-          "Developed and enhanced a high-performance financial trading application that enabled brokers to display real-time prices and efficiently manage profit and loss, directly improving trading operations.",
-          "Integrated Equiti's proprietary tools with MetaTrader 4 (MT4), streamlining trading workflows and expanding platform capabilities.",
-          "Designed, developed, and rigorously tested a range of trader-facing tools, elevating user experience and operational efficiency."
-        ],
-        ar: [
-          "طوّرت وحسّنت تطبيق تداول مالي عالي الأداء مكّن الوسطاء من عرض الأسعار في الوقت الفعلي وإدارة الأرباح والخسائر بكفاءة، بما حسّن عمليات التداول مباشرةً.",
-          "دمجت أدوات Equiti الخاصة مع منصّة MetaTrader 4 (MT4)، مما بسّط سير عمل التداول ووسّع قدرات المنصّة.",
-          "صمّمت وطوّرت واختبرت بدقّة مجموعة من الأدوات الموجّهة للمتداولين، بما ارتقى بتجربة المستخدم والكفاءة التشغيلية."
-        ]
-      }
-    },
-    {
-      company: "Aspire Services",
-      dates: { en: "Mar 2018 – Sep 2018", ar: "مارس 2018 – سبتمبر 2018" },
-      project: { en: "Test Automation Tooling", ar: "أدوات أتمتة الاختبارات" },
-      location: { en: "Amman, Jordan", ar: "عمّان، الأردن" },
-      bullets: {
-        en: [
-          "Engineered a custom development tool that empowered QA testers to author and automatically translate test cases into executable scripts, significantly reducing manual effort and accelerating release cycles.",
-          "Authored comprehensive test cases and scenarios using the in-house automation tool, ensuring high quality and reliability across client software solutions.",
-          "Generated dynamic reports from automated test results, delivering critical insights into software performance and quality assurance."
-        ],
-        ar: [
-          "طوّرت أداة تطوير مخصّصة مكّنت مختبري الجودة من كتابة حالات الاختبار وتحويلها آليًا إلى نصوص برمجية قابلة للتنفيذ، مما قلّل الجهد اليدوي بشكل كبير وسرّع دورات الإصدار.",
-          "كتبت حالات وسيناريوهات اختبار شاملة باستخدام أداة الأتمتة الداخلية، بما يضمن جودة وموثوقية عالية عبر حلول العملاء البرمجية.",
-          "أنشأت تقارير ديناميكية من نتائج الاختبارات الآلية، موفّرًا رؤى جوهرية حول أداء البرمجيات وضمان الجودة."
-        ]
-      }
-    },
-    {
-      company: "Aspire Infotech",
-      dates: { en: "Jan 2017 – Mar 2018", ar: "يناير 2017 – مارس 2018" },
-      project: { en: "Client Tools & Analytics", ar: "أدوات العملاء والتحليلات" },
-      location: { en: "Amman, Jordan", ar: "عمّان، الأردن" },
-      bullets: {
-        en: [
-          "Developed and maintained administrative tools for a diverse client base, enhancing operational efficiency and client management capabilities.",
-          "Collaborated with US-based teams to build advanced analytics tools, providing data-driven insights that supported strategic decision-making.",
-          "Revamped and maintained client websites, ensuring optimal performance, security, and a refined user experience."
-        ],
-        ar: [
-          "طوّرت وصُنت أدوات إدارية لقاعدة عملاء متنوّعة، بما عزّز الكفاءة التشغيلية وقدرات إدارة العملاء.",
-          "تعاونت مع فرق مقرّها الولايات المتحدة لبناء أدوات تحليلات متقدّمة، موفّرًا رؤى قائمة على البيانات دعمت اتخاذ القرارات الاستراتيجية.",
-          "أعدت تصميم وصيانة مواقع العملاء الإلكترونية، بما يضمن الأداء الأمثل والأمان وتجربة مستخدم متقنة."
-        ]
-      }
-    }
-  ];
-
-  var EDUCATION = {
-    degree: { en: "Bachelor of Software Engineering", ar: "بكالوريوس هندسة البرمجيات" },
-    school: { en: "Jordan University of Science and Technology", ar: "جامعة العلوم والتكنولوجيا الأردنية" },
-    location: { en: "Ar Ramtha, Jordan", ar: "الرمثا، الأردن" }
-  };
-
-  /* ---------------- Helpers ---------------- */
-  var $ = function (s, c) { return (c || document).querySelector(s); };
-  var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
-  var docEl = document.documentElement;
-
-  function esc(s) {
-    return String(s).replace(/[&<>]/g, function (m) {
-      return { "&": "&amp;", "<": "&lt;", ">": "&gt;" }[m];
+  function escapeHTML(s) {
+    return s.replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
     });
   }
 
-  // Update text of an element that may contain non-text children (e.g. SVG underline)
-  function setI18nText(el, str) {
-    if (el.children.length) {
-      var first = el.firstChild;
-      if (first && first.nodeType === 3) { first.nodeValue = str; }
-      else { el.insertBefore(document.createTextNode(str), el.firstChild); }
-    } else {
-      el.textContent = str;
+  /* Runs of the *other* script inside a string need bidi isolation, or the
+     neutrals around them reorder: ".NET Core" renders as "NET Core." and
+     "C#" as "#C" inside an Arabic paragraph. <bdi> isolates without forcing
+     a direction, which is what we want. */
+  var LATIN_RUN = /\.?[A-Za-z0-9][A-Za-z0-9.+#&/_'’-]*(?:[  ]+\.?[A-Za-z0-9][A-Za-z0-9.+#&/_'’-]*)*/g;
+  var ARABIC_RUN = /[؀-ۿݐ-ݿ][؀-ۿݐ-ݿ،؛؟\s]*[؀-ۿݐ-ݿ]|[؀-ۿݐ-ݿ]/g;
+
+  function isolate(text, lang) {
+    var re = lang === 'ar' ? LATIN_RUN : ARABIC_RUN;
+    var out = '';
+    var last = 0;
+    text.replace(re, function (match, offset) {
+      out += escapeHTML(text.slice(last, offset));
+      out += '<bdi>' + escapeHTML(match) + '</bdi>';
+      last = offset + match.length;
+      return match;
+    });
+    out += escapeHTML(text.slice(last));
+    return out;
+  }
+
+  function needsIsolation(text, lang) {
+    return lang === 'ar' ? /[A-Za-z0-9]/.test(text) : /[؀-ۿ]/.test(text);
+  }
+
+  /* ------------------------------------------------------------ rendering */
+
+  function renderStrings(lang) {
+    var nodes = document.querySelectorAll('[data-t]');
+    for (var i = 0; i < nodes.length; i++) {
+      var el = nodes[i];
+      var text = str(el.getAttribute('data-t'), lang);
+      if (!text) continue;
+      if (needsIsolation(text, lang)) el.innerHTML = isolate(text, lang);
+      else el.textContent = text;
     }
+
+    var attrNodes = document.querySelectorAll('[data-t-attr]');
+    for (var j = 0; j < attrNodes.length; j++) {
+      var node = attrNodes[j];
+      var pairs = node.getAttribute('data-t-attr').split(';');
+      for (var k = 0; k < pairs.length; k++) {
+        var bits = pairs[k].split(':');
+        if (bits.length < 2) continue;
+        var value = str(bits[1].trim(), lang);
+        if (value) node.setAttribute(bits[0].trim(), value);
+      }
+    }
+
+    document.title = str('meta.title', lang);
+    setMeta('name', 'description', str('meta.description', lang));
+    setMeta('property', 'og:title', str('meta.title', lang));
+    setMeta('property', 'og:description', str('meta.ogDescription', lang));
+    setMeta('property', 'og:locale', lang === 'ar' ? 'ar_JO' : 'en_US');
+    setMeta('property', 'og:locale:alternate', lang === 'ar' ? 'en_US' : 'ar_JO');
+    setMeta('name', 'twitter:title', str('meta.title', lang));
+    setMeta('name', 'twitter:description', str('meta.ogDescription', lang));
   }
 
-  /* ---------------- Renderers ---------------- */
-  function renderStats(lang) {
-    $("#stats").innerHTML = STATS.map(function (s) {
-      return '<li class="stat"><div class="stat__num">' + s.num + '</div>' +
-        '<div class="stat__label">' + esc(s.label[lang]) + '</div></li>';
-    }).join("");
+  function setMeta(attr, key, value) {
+    var el = document.querySelector('meta[' + attr + '="' + key + '"]');
+    if (el && value) el.setAttribute('content', value);
   }
 
-  function renderSkills(lang) {
-    $("#skillsGrid").innerHTML = SKILLS.map(function (g, i) {
-      var idx = ("0" + (i + 1)).slice(-2);
-      var chips = g.items.map(function (t) {
-        return '<span class="chip" dir="ltr">' + esc(t) + '</span>';
-      }).join("");
-      return '<div class="skill-card">' +
-        '<div class="skill-card__head"><span class="skill-card__idx">' + idx + '</span>' +
-        '<h3 class="skill-card__title">' + esc(g.title[lang]) + '</h3></div>' +
-        '<div class="chips">' + chips + '</div></div>';
-    }).join("");
-  }
+  /* ------------------------------------------------------------- language */
 
-  function renderProjects(lang) {
-    $("#projectsGrid").innerHTML = PROJECTS.map(function (p) {
-      var chips = p.stack.map(function (t) {
-        return '<span class="chip" dir="ltr">' + esc(t) + '</span>';
-      }).join("");
-      return '<article class="project-card">' +
-        '<span class="project-card__domain">' + esc(p.domain[lang]) + '</span>' +
-        '<h3 class="project-card__title">' + esc(p.title[lang]) + '</h3>' +
-        '<div class="project-card__meta" dir="auto">' + esc(p.meta[lang]) + '</div>' +
-        '<p class="project-card__desc">' + esc(p.desc[lang]) + '</p>' +
-        '<div class="chips">' + chips + '</div></article>';
-    }).join("");
-  }
+  var langBtn = document.getElementById('langBtn');
+  var arInjected = root.lang === 'ar';
 
-  function renderExperience(lang) {
-    var role = UI[lang]["role"];
-    $("#timeline").innerHTML = EXPERIENCE.map(function (e) {
-      var sub = [e.project[lang], e.location[lang]].filter(Boolean).join(" · ");
-      var bullets = e.bullets[lang].map(function (b) {
-        return "<li>" + esc(b) + "</li>";
-      }).join("");
-      return '<li class="tl-item"><div class="tl-card">' +
-        '<div class="tl-top"><span class="tl-company" dir="ltr">' + esc(e.company) + '</span>' +
-        '<span class="tl-dates" dir="auto">' + esc(e.dates[lang]) + '</span></div>' +
-        '<div class="tl-role">' + esc(role) + '</div>' +
-        '<div class="tl-sub">' + esc(sub) + '</div>' +
-        '<ul class="tl-bullets">' + bullets + '</ul></div></li>';
-    }).join("");
+  function ensureArabicFonts() {
+    if (arInjected) return Promise.resolve();
+    arInjected = true;
+    return new Promise(function (resolve) {
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.id = 'ar-fonts';
+      link.href = 'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Reem+Kufi:wght@400..700&display=swap';
+      link.onload = link.onerror = resolve;
+      document.head.appendChild(link);
+      setTimeout(resolve, 400);
+    });
   }
-
-  function renderEducation(lang) {
-    var e = EDUCATION;
-    $("#education-card").innerHTML =
-      '<div class="edu-card">' +
-      '<div class="edu-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg></div>' +
-      '<div><div class="edu-card__title">' + esc(e.degree[lang]) + '</div>' +
-      '<div class="edu-card__meta">' + esc(e.school[lang]) + ' — ' + esc(e.location[lang]) + '</div></div></div>';
-  }
-
-  /* ---------------- Language ---------------- */
-  var lang = docEl.getAttribute("lang") === "ar" ? "ar" : "en";
-  var firstRender = true;
 
   function applyLang(next) {
-    lang = next;
-    docEl.setAttribute("lang", lang);
-    docEl.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
-    try { localStorage.setItem("lang", lang); } catch (e) {}
+    root.lang = next;
+    root.dir = next === 'ar' ? 'rtl' : 'ltr';
+    try { localStorage.setItem('lang', next); } catch (e) { /* private mode */ }
 
-    // static strings
-    $$("[data-i18n]").forEach(function (el) {
-      var key = el.getAttribute("data-i18n");
-      var val = UI[lang][key];
-      if (val != null) setI18nText(el, val);
-    });
+    renderStrings(next);
 
-    // dynamic sections
-    renderStats(lang);
-    renderSkills(lang);
-    renderProjects(lang);
-    renderExperience(lang);
-    renderEducation(lang);
-    // Only the very first render should play the staggered fade-in; a later
-    // language switch just swaps text and must not re-animate the cards.
-    if (!firstRender) {
-      $$(".stagger").forEach(function (el) { el.classList.add("no-stagger"); });
-    }
-    firstRender = false;
-    observeReveals();
+    if (langBtn) langBtn.setAttribute('lang', next === 'ar' ? 'en' : 'ar');
 
-    // language button shows the OTHER language
-    var lb = $("#langBtn");
-    lb.querySelector("span").textContent = lang === "en" ? "العربية" : "English";
-    lb.setAttribute("aria-label", lang === "en" ? "التبديل إلى العربية" : "Switch to English");
-
-    document.title = (lang === "ar"
-      ? "نادر سمير السوقي — مهندس برمجيات"
-      : "Nader Samir Alsouqi — Software Engineer");
+    /* Reveals must not replay when only the text changed. */
+    var seen = document.querySelectorAll('.is-in');
+    for (var i = 0; i < seen.length; i++) seen[i].classList.add('no-replay');
   }
 
-  /* ---------------- Theme ---------------- */
+  function nearestSectionInView() {
+    var sections = document.querySelectorAll('main > section');
+    var best = null;
+    var bestTop = Infinity;
+    for (var i = 0; i < sections.length; i++) {
+      var top = sections[i].getBoundingClientRect().top;
+      if (top < 120 && Math.abs(top) < Math.abs(bestTop)) { best = sections[i]; bestTop = top; }
+      else if (best === null && top >= 0 && top < bestTop) { best = sections[i]; bestTop = top; }
+    }
+    return best ? { el: best, top: bestTop } : null;
+  }
+
+  function restoreAnchor(anchor) {
+    if (!anchor) return;
+    var now = anchor.el.getBoundingClientRect().top;
+    window.scrollBy(0, now - anchor.top);
+  }
+
+  function switchLang(next) {
+    ensureArabicFonts().then(function () {
+      var anchor = nearestSectionInView();
+      var apply = function () { applyLang(next); restoreAnchor(anchor); };
+
+      /* Note: apply() is called directly in the else branch. Defining the
+         mutation only inside the transition callback is the classic bug that
+         leaves the language stuck in browsers without View Transitions. */
+      if (!document.startViewTransition || reduced.matches) {
+        document.body.classList.add('is-swapping');
+        setTimeout(function () {
+          apply();
+          document.body.classList.remove('is-swapping');
+        }, reduced.matches ? 0 : 180);
+        return;
+      }
+      document.startViewTransition(apply);
+    });
+  }
+
+  if (langBtn) {
+    var warm = function () { ensureArabicFonts(); };
+    langBtn.addEventListener('pointerenter', warm, { once: true });
+    langBtn.addEventListener('focus', warm, { once: true });
+    langBtn.addEventListener('click', function () {
+      switchLang(root.lang === 'ar' ? 'en' : 'ar');
+    });
+  }
+
+  /* Re-render on load so any string that drifted from the static HTML is
+     corrected, and so Arabic is applied when it was restored from storage. */
+  renderStrings(root.lang === 'ar' ? 'ar' : 'en');
+
+  /* ---------------------------------------------------------------- theme */
+
+  var themeBtn = document.getElementById('themeBtn');
+
   function applyTheme(next) {
-    docEl.setAttribute("data-theme", next);
-    try { localStorage.setItem("theme", next); } catch (e) {}
-    var meta = $('meta[name="theme-color"]');
-    if (meta) meta.setAttribute("content", next === "dark" ? "#16161a" : "#f3efe6");
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) { /* private mode */ }
+    if (themeBtn) themeBtn.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
   }
 
-  /* ---------------- Scroll reveal ---------------- */
-  var revealObserver;
-  function observeReveals() {
-    if (!("IntersectionObserver" in window)) {
-      $$(".reveal").forEach(function (el) { el.classList.add("in"); });
-      return;
-    }
-    if (!revealObserver) {
-      revealObserver = new IntersectionObserver(function (entries) {
-        entries.forEach(function (en) {
-          if (en.isIntersecting) { en.target.classList.add("in"); revealObserver.unobserve(en.target); }
-        });
-      }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
-    }
-    $$(".reveal:not(.in)").forEach(function (el) { revealObserver.observe(el); });
-  }
+  applyTheme(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
 
-  /* ---------------- Active nav link ---------------- */
-  function setupActiveNav() {
-    var links = $$(".nav__links a");
-    var map = {};
-    links.forEach(function (a) { map[a.getAttribute("href").slice(1)] = a; });
-    if (!("IntersectionObserver" in window)) return;
-    var obs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (en.isIntersecting) {
-          links.forEach(function (a) { a.classList.remove("active"); });
-          var a = map[en.target.id];
-          if (a) a.classList.add("active");
-        }
-      });
-    }, { rootMargin: "-45% 0px -50% 0px" });
-    ["about", "skills", "projects", "experience", "education", "contact"].forEach(function (id) {
-      var s = document.getElementById(id);
-      if (s) obs.observe(s);
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function () {
+      applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
     });
   }
 
-  /* ---------------- Init ---------------- */
-  function init() {
-    // portrait fallback
-    var img = $("#portraitImg");
-    if (img) {
-      img.addEventListener("error", function () { $("#portrait").classList.add("no-img"); });
-      if (img.complete && img.naturalWidth === 0) $("#portrait").classList.add("no-img");
-    }
+  /* -------------------------------------------------------------- reveals */
 
-    // Sync <meta name="theme-color"> to the theme the inline head script resolved,
-    // so the browser chrome matches from first paint (not just after a manual toggle).
-    applyTheme(docEl.getAttribute("data-theme") === "dark" ? "dark" : "light");
+  var sections = allSections;
 
-    applyLang(lang);
-
-    // toggles
-    $("#langBtn").addEventListener("click", function () { applyLang(lang === "en" ? "ar" : "en"); });
-    $("#themeBtn").addEventListener("click", function () {
-      applyTheme(docEl.getAttribute("data-theme") === "dark" ? "light" : "dark");
-    });
-
-    // mobile menu
-    var menuBtn = $("#menuBtn"), links = $("#navLinks");
-    if (menuBtn) {
-      menuBtn.addEventListener("click", function () {
-        var open = links.classList.toggle("open");
-        menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-in');
+        io.unobserve(entry.target);
       });
-      $$(".nav__links a").forEach(function (a) {
-        a.addEventListener("click", function () {
-          links.classList.remove("open");
-          menuBtn.setAttribute("aria-expanded", "false");
-        });
-      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+
+    /* The hero is above the fold and was revealed at the top of this file. */
+    for (var s = 0; s < sections.length; s++) {
+      if (sections[s] !== heroSection) io.observe(sections[s]);
     }
-
-    // nav shadow on scroll
-    var nav = $("#nav");
-    var onScroll = function () { nav.classList.toggle("scrolled", window.scrollY > 8); };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-
-    setupActiveNav();
-
-    var y = $("#year");
-    if (y) y.textContent = String(new Date().getFullYear());
+  } else {
+    for (var s2 = 0; s2 < sections.length; s2++) sections[s2].classList.add('is-in');
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
-  } else { init(); }
+  /* ------------------------------------------------- nav + ledger tracking */
+
+  var navLinks = document.querySelectorAll('.nav__link');
+
+  function markActive(id) {
+    for (var i = 0; i < navLinks.length; i++) {
+      var match = navLinks[i].getAttribute('href') === '#' + id;
+      if (match) navLinks[i].setAttribute('aria-current', 'true');
+      else navLinks[i].removeAttribute('aria-current');
+    }
+  }
+
+  if ('IntersectionObserver' in window) {
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) markActive(entry.target.id);
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    for (var t = 0; t < sections.length; t++) {
+      if (sections[t].id && sections[t].id !== 'hero') spy.observe(sections[t]);
+    }
+
+    var roles = document.querySelectorAll('.role');
+    var rail = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        entry.target.classList.toggle('is-inview', entry.isIntersecting);
+      });
+    }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+    for (var r = 0; r < roles.length; r++) rail.observe(roles[r]);
+  }
+
+  /* ------------------------------------------------- masthead + fore-edge */
+
+  var masthead = document.querySelector('.masthead');
+  var foreedge = document.querySelector('.foreedge');
+  var needsProgressJS = !(window.CSS && CSS.supports && CSS.supports('animation-timeline', 'scroll()'));
+  var ticking = false;
+
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      var y = window.pageYOffset || document.documentElement.scrollTop;
+      if (masthead) masthead.classList.toggle('is-condensed', y > 200);
+      if (needsProgressJS && foreedge) {
+        var max = document.documentElement.scrollHeight - window.innerHeight;
+        root.style.setProperty('--progress', max > 0 ? String(Math.min(1, y / max)) : '0');
+      }
+      ticking = false;
+    });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ------------------------------------------------------------- portrait */
+
+  var portrait = document.getElementById('portrait');
+  var plate = document.querySelector('.plate');
+
+  if (portrait) {
+    portrait.addEventListener('error', function () {
+      var inner = portrait.parentNode;
+      portrait.remove();
+      var mono = document.createElement('span');
+      mono.className = 'plate__monogram';
+      mono.setAttribute('aria-hidden', 'true');
+      mono.textContent = 'N.S';
+      inner.appendChild(mono);
+      inner.classList.add('is-fallback');
+    });
+  }
+
+  if (plate && !reduced.matches && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    var pending = false;
+    var px = 0;
+    var py = 0;
+    plate.addEventListener('pointermove', function (ev) {
+      var rect = plate.getBoundingClientRect();
+      px = ((ev.clientX - rect.left) / rect.width) * 100;
+      py = ((ev.clientY - rect.top) / rect.height) * 100;
+      if (pending) return;
+      pending = true;
+      requestAnimationFrame(function () {
+        plate.style.setProperty('--mx', px.toFixed(2) + '%');
+        plate.style.setProperty('--my', py.toFixed(2) + '%');
+        pending = false;
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------- copy email */
+
+  var copyBtn = document.getElementById('copyBtn');
+  var copyStatus = document.getElementById('copyStatus');
+  var copyTimer = null;
+
+  function say(key) {
+    if (!copyStatus) return;
+    copyStatus.textContent = str('ui.' + key, root.lang === 'ar' ? 'ar' : 'en');
+    clearTimeout(copyTimer);
+    copyTimer = setTimeout(function () { copyStatus.textContent = ''; }, 2500);
+  }
+
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function () {
+      var email = copyBtn.getAttribute('data-email');
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(function () { say('copied'); },
+                                                  function () { say('copyFailed'); });
+        return;
+      }
+      try {
+        var ta = document.createElement('textarea');
+        ta.value = email;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        ta.remove();
+        say('copied');
+      } catch (e) {
+        say('copyFailed');
+      }
+    });
+  }
+
+  /* ------------------------------------------------------------ the year */
+
+  var yearNodes = document.querySelectorAll('[data-year]');
+  var year = String(new Date().getFullYear());
+  for (var y2 = 0; y2 < yearNodes.length; y2++) yearNodes[y2].textContent = year;
 })();
