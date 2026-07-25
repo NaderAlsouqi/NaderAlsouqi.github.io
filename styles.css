@@ -656,8 +656,10 @@ html[lang="ar"] .hero__line2 { font-weight: 600; margin-inline-start: 0; }
   opacity: .5;
   pointer-events: none;
 }
-html[lang="en"] .sect-num::before { content: attr(data-num-en); }
-html[lang="ar"] .sect-num::before { content: attr(data-num-ar); }
+/* Western digits in both locales — that is Jordanian/Gulf web practice, it
+   matches every other figure on the page, and a lone Arabic-Indic numeral at
+   this size reads as a stray mark rather than a number. */
+.sect-num::before { content: attr(data-num); }
 
 .sect-head .eyebrow {
   display: inline-block;
@@ -903,9 +905,9 @@ html[lang="ar"] .role__years { letter-spacing: 0; }
   border-radius: var(--r-1);
   justify-self: end;
   white-space: nowrap;
-  animation: pulse 2.4s var(--ease-inout) infinite;
+  /* No pulse: this is real text, and fading it to .45 drops the label to
+     ~2.05:1 for half of every cycle. The word does the work on its own. */
 }
-@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .45; } }
 
 .role__chev {
   grid-column: 5;
@@ -967,7 +969,9 @@ html[lang="ar"] .role__years { letter-spacing: 0; }
 .index {
   grid-column: content-start / content-end;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  /* min() so the 300px floor collapses to the container on a narrow phone;
+     a hard 300px overflows and clips skill names below ~334px. */
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   column-gap: var(--s-8);
   row-gap: var(--s-6);
 }
@@ -1022,6 +1026,9 @@ html[lang="ar"] .role__years { letter-spacing: 0; }
 }
 html[lang="ar"] .reach__line { font-style: normal; font-family: var(--font-body); font-weight: 500; }
 .reach__key { color: var(--ink-muted); font-style: normal; }
+/* The value is wrapped in a span so the grid item keeps the page direction
+   (and its start-alignment) while the <bdi> inside isolates the Latin run. */
+.reach__val { min-width: 0; overflow-wrap: anywhere; }
 .reach__actions { display: flex; flex-wrap: wrap; gap: var(--s-6); margin-block-start: var(--s-7); }
 .reach__status { color: var(--accent); min-height: 1.2em; margin: 0; }
 
@@ -1071,7 +1078,9 @@ html[lang="en"] .link--cta { text-transform: uppercase; letter-spacing: var(--tr
 .wedge--footer { height: 4px; border-block-end: 1px solid var(--rule); }
 .footer__inner { padding-block: var(--s-6); row-gap: var(--s-2); }
 .footer__line { grid-column: content-start / span 7; color: var(--ink-muted); margin: 0; text-transform: none !important; letter-spacing: 0 !important; }
-.footer__meta { grid-column: content-start / content-end; color: var(--ink-faint); margin: 0; }
+/* --ink-muted, not --ink-faint: this line carries the name and location, so it
+   is real text and has to clear 4.5:1. --ink-faint is decorative only. */
+.footer__meta { grid-column: content-start / content-end; color: var(--ink-muted); margin: 0; }
 
 /* --------------------------------------------------------------- reveal -- */
 .js :is(.sect-head, .sect-intro, .about__prose, .specimen, .work, .role, .group, .edu, .reach, .colophon) {
@@ -1084,6 +1093,15 @@ html[lang="en"] .link--cta { text-transform: uppercase; letter-spacing: var(--tr
   opacity: 1;
   transform: none;
 }
+/* .group carries its own hover transition, and the reveal shorthand above
+   replaces it. Restate both at matching specificity so the hover still eases. */
+.js .group {
+  transition: opacity var(--t-slow) var(--ease-out),
+              transform var(--t-slow) var(--ease-out),
+              padding-inline-start var(--t-fast) var(--ease-out),
+              border-color var(--t-fast) var(--ease-out);
+}
+
 .js .no-replay :is(.sect-head, .sect-intro, .about__prose, .specimen, .work, .role, .group, .edu, .reach, .colophon) {
   transition: none !important;
   opacity: 1;
@@ -1137,8 +1155,10 @@ html[lang="en"] .link--cta { text-transform: uppercase; letter-spacing: var(--tr
 }
 
 @media (max-width: 899px) {
-  /* Every span collapses. One rule, no exceptions list. */
-  .sheet > * { grid-column: content-start / content-end !important; }
+  /* Every span in the document collapses. Scoped to main/footer on purpose:
+     unscoped it also hit the masthead, which stays a grid until 760px, and
+     orphaned the controls onto a third row between 761 and 899px. */
+  main .sheet > *, .footer .sheet > * { grid-column: content-start / content-end !important; }
   .plate { margin-block-start: var(--s-7); }
   /* Square, uncropped: the source is a square drawing, so honour it. The
      viewport-height cap is a desktop concern only — left on, it turns the
@@ -1160,11 +1180,11 @@ html[lang="en"] .link--cta { text-transform: uppercase; letter-spacing: var(--tr
   .reach__line { grid-template-columns: 1fr; gap: 0; }
 }
 
-@media (max-width: 760px) {
-  .reg { display: none; }
-  .furniture__rule { display: none; }
-  /* The 12-column grid buys nothing in a 3-item bar, and it lets the mark and
-     the controls overlap once the name grows. Flex keeps them apart. */
+/* The masthead changes over at the SAME width as the content grid, so there is
+   one breakpoint, not two: below it the 12-column bar becomes a flex row with
+   the section index as a scrolling strip underneath. Nothing is ever hidden
+   behind a menu button. */
+@media (max-width: 899px) {
   .masthead__inner {
     display: flex;
     flex-wrap: wrap;
@@ -1192,6 +1212,11 @@ html[lang="en"] .link--cta { text-transform: uppercase; letter-spacing: var(--tr
   .nav__item { scroll-snap-align: start; }
   .nav__link { white-space: nowrap; min-height: 44px; align-items: center; }
   .ctrl { min-width: 44px; min-height: 44px; }
+}
+
+@media (max-width: 760px) {
+  .reg { display: none; }
+  .furniture__rule { display: none; }
   .sect-num { font-size: 2rem; }
   .work__ghost { font-size: 2rem; }
   .foreedge { inset-inline-start: 0; width: 2px; }
@@ -1218,7 +1243,6 @@ html[lang="en"] .link--cta { text-transform: uppercase; letter-spacing: var(--tr
   .plate__inner::after { display: none !important; }
   .sect-head::after { transform: scaleX(1) !important; }
   .foreedge { animation: none !important; transform: scaleY(0) !important; }
-  .role__flag { animation: none !important; }
   .js :is(.sect-head, .sect-intro, .about__prose, .specimen, .work, .role, .group, .edu, .reach, .colophon),
   .js #hero :is(.hero__label, .hero__name, .hero__deck, .hero__colophon, .hero__links, .plate__cap, .plate__marks) {
     opacity: 1; transform: none;
@@ -1238,7 +1262,11 @@ html[lang="en"] .link--cta { text-transform: uppercase; letter-spacing: var(--tr
   .plate__img { mix-blend-mode: normal; }
   .plate__inner { animation: none !important; -webkit-mask-image: none; mask-image: none; }
   section { break-inside: avoid; }
+  /* A closed <details> is collapsed by ::details-content where that is
+     supported, so forcing the inner wrapper open is not enough — five of the
+     six roles would print empty. */
   .role__body { grid-template-rows: 1fr !important; }
+  .role::details-content { content-visibility: visible !important; block-size: auto !important; }
   .role__chev { display: none; }
   .js :is(.sect-head, .sect-intro, .about__prose, .specimen, .work, .role, .group, .edu, .reach, .colophon) {
     opacity: 1 !important; transform: none !important;

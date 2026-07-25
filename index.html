@@ -58,10 +58,11 @@
 /* Set language, direction and theme before first paint. */
 (function () {
   var d = document.documentElement;
+  function ls(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
   var p = new URLSearchParams(location.search);
   var q = p.get('lang'), qt = p.get('theme');
-  var l = (q === 'ar' || q === 'en') ? q : (localStorage.getItem('lang') || 'en');
-  var t = (qt === 'dark' || qt === 'light') ? qt : (localStorage.getItem('theme') ||
+  var l = (q === 'ar' || q === 'en') ? q : (ls('lang') || 'en');
+  var t = (qt === 'dark' || qt === 'light') ? qt : (ls('theme') ||
           (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
   d.lang = l;
   d.dir = l === 'ar' ? 'rtl' : 'ltr';
@@ -106,9 +107,9 @@
     </nav>
 
     <div class="controls">
-      <button class="ctrl ctrl--lang" id="langBtn" type="button" lang="ar"
+      <button class="ctrl ctrl--lang" id="langBtn" type="button"
               data-t-attr="aria-label:ui.langSwitchAria" aria-label="Switch to Arabic">
-        <span data-t="ui.langSwitch">العربية</span>
+        <span data-t="ui.langSwitch" lang="ar">العربية</span>
       </button>
       <button class="ctrl ctrl--theme" id="themeBtn" type="button" aria-pressed="false"
               data-t-attr="aria-label:ui.themeToggle" aria-label="Toggle theme">
@@ -136,7 +137,7 @@
 
     <ul class="hero__colophon micro">
       <li><bdi data-t="hero.years">8+ years</bdi></li>
-      <li dir="ltr" class="mono">.NET Core · C#</li>
+      <li class="mono"><bdi>.NET Core · C#</bdi></li>
       <li><span data-t="hero.eyebrow">Fintech · Blockchain · ERP</span></li>
     </ul>
 
@@ -161,7 +162,7 @@
   <!-- ============================== 01 ABOUT ================================ -->
   <section id="about" class="sheet" aria-labelledby="h-about">
       <header class="sect-head">
-        <span class="sect-num micro" data-num-en="01" data-num-ar="١" aria-hidden="true"></span>
+        <span class="sect-num micro" data-num="01" aria-hidden="true"></span>
         <span class="eyebrow micro" data-t="about.kicker">Profile</span>
         <h2 data-t="about.title" id="h-about">The engineer behind the sketch</h2>
       </header>
@@ -179,7 +180,7 @@
         <dt><span data-t="specimen.since">Practising since</span></dt><dd class="mono"><bdi>2017</bdi></dd>
         <dt><span data-t="specimen.companies">Companies</span></dt><dd class="mono"><bdi>06</bdi></dd>
         <dt><span data-t="specimen.domains">Domains</span></dt><dd><span data-t="hero.eyebrow">Fintech · Blockchain · ERP</span></dd>
-        <dt><span data-t="specimen.core">Core stack</span></dt><dd class="mono" dir="ltr">.NET Core · C# · SQL Server</dd>
+        <dt><span data-t="specimen.core">Core stack</span></dt><dd class="mono"><bdi>.NET Core · C# · SQL Server</bdi></dd>
         <dt><span data-t="specimen.languages">Languages</span></dt><dd><span data-t="specimen.languagesV">English · العربية</span></dd>
       </dl>
     </aside>
@@ -188,7 +189,7 @@
   <!-- =========================== 02 SELECTED WORK =========================== -->
   <section id="work" class="sheet" aria-labelledby="h-work">
       <header class="sect-head">
-        <span class="sect-num micro" data-num-en="02" data-num-ar="٢" aria-hidden="true"></span>
+        <span class="sect-num micro" data-num="02" aria-hidden="true"></span>
         <span class="eyebrow micro" data-t="projects.kicker">Selected work</span>
         <h2 data-t="projects.title" id="h-work">Four systems, four problems</h2>
       </header>
@@ -200,9 +201,9 @@
         <h3 class="work__title" data-t="projects.items.0.name">Legacy Accounting System Rebuild</h3>
         <p class="work__blurb" data-t="projects.items.0.blurb">A VB6 accounting system re-engineered into a modern .NET and Angular architecture, plus a maintenance module built for the client&#x27;s operations.</p>
         <dl class="label">
-          <dt><span data-t="plateLabel.client">Client</span></dt><dd class="mono" dir="ltr">Skyline</dd>
+          <dt><span data-t="plateLabel.client">Client</span></dt><dd class="mono"><bdi>Skyline</bdi></dd>
           <dt><span data-t="plateLabel.date">Date</span></dt><dd class="mono"><bdi data-t="projects.items.0.period">2026 — Present</bdi></dd>
-          <dt><span data-t="plateLabel.stack">Stack</span></dt><dd class="mono" dir="ltr">VB6 → .NET · Angular · C# · ERP · Modernization</dd>
+          <dt><span data-t="plateLabel.stack">Stack</span></dt><dd class="mono"><bdi>VB6 → .NET · Angular · C# · ERP · Modernization</bdi></dd>
         </dl>
         <ul class="work__points">
           <li><span data-t="projects.items.0.highlights.0">Legacy VB6 core re-engineered onto .NET and Angular</span></li>
@@ -216,9 +217,9 @@
         <h3 class="work__title" data-t="projects.items.1.name">Multi-Branch Car Rental ERP</h3>
         <p class="work__blurb" data-t="projects.items.1.blurb">A .NET Core ERP covering reservations, rental agreements, invoicing and CRM, architected for multiple branches and high concurrent transaction volume.</p>
         <dl class="label">
-          <dt><span data-t="plateLabel.client">Client</span></dt><dd class="mono" dir="ltr">ACS-Tech</dd>
+          <dt><span data-t="plateLabel.client">Client</span></dt><dd class="mono"><bdi>ACS-Tech</bdi></dd>
           <dt><span data-t="plateLabel.date">Date</span></dt><dd class="mono"><bdi data-t="projects.items.1.period">2025 — 2026</bdi></dd>
-          <dt><span data-t="plateLabel.stack">Stack</span></dt><dd class="mono" dir="ltr">.NET Core · C# · Payments · Async · Caching · APIs</dd>
+          <dt><span data-t="plateLabel.stack">Stack</span></dt><dd class="mono"><bdi>.NET Core · C# · Payments · Async · Caching · APIs</bdi></dd>
         </dl>
         <ul class="work__points">
           <li><span data-t="projects.items.1.highlights.0">Reservations, agreements, invoicing and CRM in one platform</span></li>
@@ -232,9 +233,9 @@
         <h3 class="work__title" data-t="projects.items.2.name">Ethereum-Style Blockchain Platform</h3>
         <p class="work__blurb" data-t="projects.items.2.blurb">A decentralized finance platform modeled on Ethereum — transaction validation, wallet management and secure APIs, delivered with a multinational team.</p>
         <dl class="label">
-          <dt><span data-t="plateLabel.client">Client</span></dt><dd class="mono" dir="ltr">GTA Startup</dd>
+          <dt><span data-t="plateLabel.client">Client</span></dt><dd class="mono"><bdi>GTA Startup</bdi></dd>
           <dt><span data-t="plateLabel.date">Date</span></dt><dd class="mono"><bdi data-t="projects.items.2.period">2024 · Turkey</bdi></dd>
-          <dt><span data-t="plateLabel.stack">Stack</span></dt><dd class="mono" dir="ltr">dApps · Smart Contracts · Wallets · Token Standards · APIs</dd>
+          <dt><span data-t="plateLabel.stack">Stack</span></dt><dd class="mono"><bdi>dApps · Smart Contracts · Wallets · Token Standards · APIs</bdi></dd>
         </dl>
         <ul class="work__points">
           <li><span data-t="projects.items.2.highlights.0">Core modules for transaction validation and wallet management</span></li>
@@ -248,9 +249,9 @@
         <h3 class="work__title" data-t="projects.items.3.name">Broker Trading Tools &amp; MT4 Integration</h3>
         <p class="work__blurb" data-t="projects.items.3.blurb">High-performance trading software giving brokers real-time prices and profit-and-loss control, wired into MetaTrader 4 through Equiti&#x27;s proprietary tools.</p>
         <dl class="label">
-          <dt><span data-t="plateLabel.client">Client</span></dt><dd class="mono" dir="ltr">Equiti JO</dd>
+          <dt><span data-t="plateLabel.client">Client</span></dt><dd class="mono"><bdi>Equiti JO</bdi></dd>
           <dt><span data-t="plateLabel.date">Date</span></dt><dd class="mono"><bdi data-t="projects.items.3.period">2019 — 2022 · Amman</bdi></dd>
-          <dt><span data-t="plateLabel.stack">Stack</span></dt><dd class="mono" dir="ltr">MetaTrader 4 · Real-Time Pricing · P&amp;L · Fintech · Testing</dd>
+          <dt><span data-t="plateLabel.stack">Stack</span></dt><dd class="mono"><bdi>MetaTrader 4 · Real-Time Pricing · P&amp;L · Fintech · Testing</bdi></dd>
         </dl>
         <ul class="work__points">
           <li><span data-t="projects.items.3.highlights.0">Real-time price display and profit-and-loss management for brokers</span></li>
@@ -263,7 +264,7 @@
   <!-- ============================ 03 EXPERIENCE ============================= -->
   <section id="experience" class="sheet" aria-labelledby="h-exp">
       <header class="sect-head">
-        <span class="sect-num micro" data-num-en="03" data-num-ar="٣" aria-hidden="true"></span>
+        <span class="sect-num micro" data-num="03" aria-hidden="true"></span>
         <span class="eyebrow micro" data-t="experience.kicker">Timeline</span>
         <h2 data-t="experience.title" id="h-exp">Six roles, newest first</h2>
       </header>
@@ -285,7 +286,7 @@
               <li><span data-t="experience.items.0.bullets.1">Designed and built a maintenance management system shaped around the client&#x27;s specific operational requirements.</span></li>
               <li><span data-t="experience.items.0.bullets.2">Resolve critical issues across the company&#x27;s ERP platform and provide ongoing support that keeps it stable.</span></li>
             </ul>
-            <ul class="tags"><li class="tag" dir="ltr">.NET</li><li class="tag" dir="ltr">Angular</li><li class="tag" dir="ltr">VB6</li><li class="tag" dir="ltr">ERP</li><li class="tag" dir="ltr">Modernization</li></ul>
+            <ul class="tags"><li class="tag"><bdi>.NET</bdi></li><li class="tag"><bdi>Angular</bdi></li><li class="tag"><bdi>VB6</bdi></li><li class="tag"><bdi>ERP</bdi></li><li class="tag"><bdi>Modernization</bdi></li></ul>
           </div>
         </div>
       </details>
@@ -307,7 +308,7 @@
               <li><span data-t="experience.items.1.bullets.4">Raised system performance through asynchronous programming, strategic caching and database query optimization.</span></li>
               <li><span data-t="experience.items.1.bullets.5">Worked directly with product managers and clients so ERP features matched business objectives precisely.</span></li>
             </ul>
-            <ul class="tags"><li class="tag" dir="ltr">.NET Core</li><li class="tag" dir="ltr">C#</li><li class="tag" dir="ltr">ERP</li><li class="tag" dir="ltr">Payments</li><li class="tag" dir="ltr">APIs</li><li class="tag" dir="ltr">Caching</li></ul>
+            <ul class="tags"><li class="tag"><bdi>.NET Core</bdi></li><li class="tag"><bdi>C#</bdi></li><li class="tag"><bdi>ERP</bdi></li><li class="tag"><bdi>Payments</bdi></li><li class="tag"><bdi>APIs</bdi></li><li class="tag"><bdi>Caching</bdi></li></ul>
           </div>
         </div>
       </details>
@@ -328,7 +329,7 @@
               <li><span data-t="experience.items.2.bullets.3">Introduced performance monitoring and automated testing frameworks, strengthening scalability and reliability.</span></li>
               <li><span data-t="experience.items.2.bullets.4">Aligned product functionality with real-world financial use cases to support the startup&#x27;s go-to-market strategy.</span></li>
             </ul>
-            <ul class="tags"><li class="tag" dir="ltr">Blockchain</li><li class="tag" dir="ltr">dApps</li><li class="tag" dir="ltr">Smart Contracts</li><li class="tag" dir="ltr">Wallets</li><li class="tag" dir="ltr">APIs</li></ul>
+            <ul class="tags"><li class="tag"><bdi>Blockchain</bdi></li><li class="tag"><bdi>dApps</bdi></li><li class="tag"><bdi>Smart Contracts</bdi></li><li class="tag"><bdi>Wallets</bdi></li><li class="tag"><bdi>APIs</bdi></li></ul>
           </div>
         </div>
       </details>
@@ -347,7 +348,7 @@
               <li><span data-t="experience.items.3.bullets.1">Integrated Equiti&#x27;s proprietary tools with MetaTrader 4, streamlining trading workflows and expanding platform capability.</span></li>
               <li><span data-t="experience.items.3.bullets.2">Designed, built and rigorously tested trader-facing tools that lifted user experience and operational efficiency.</span></li>
             </ul>
-            <ul class="tags"><li class="tag" dir="ltr">Trading</li><li class="tag" dir="ltr">MetaTrader 4</li><li class="tag" dir="ltr">Real-Time Data</li><li class="tag" dir="ltr">Fintech</li></ul>
+            <ul class="tags"><li class="tag"><bdi>Trading</bdi></li><li class="tag"><bdi>MetaTrader 4</bdi></li><li class="tag"><bdi>Real-Time Data</bdi></li><li class="tag"><bdi>Fintech</bdi></li></ul>
           </div>
         </div>
       </details>
@@ -366,7 +367,7 @@
               <li><span data-t="experience.items.4.bullets.1">Authored comprehensive test cases and scenarios in that in-house tool, holding quality high across client software.</span></li>
               <li><span data-t="experience.items.4.bullets.2">Generated dynamic reports from automated test results, surfacing insight into software performance and quality assurance.</span></li>
             </ul>
-            <ul class="tags"><li class="tag" dir="ltr">Test Automation</li><li class="tag" dir="ltr">QA Tooling</li><li class="tag" dir="ltr">Reporting</li></ul>
+            <ul class="tags"><li class="tag"><bdi>Test Automation</bdi></li><li class="tag"><bdi>QA Tooling</bdi></li><li class="tag"><bdi>Reporting</bdi></li></ul>
           </div>
         </div>
       </details>
@@ -385,7 +386,7 @@
               <li><span data-t="experience.items.5.bullets.1">Built advanced analytics tools with US-based teams, delivering data-driven insight that supported strategic decisions.</span></li>
               <li><span data-t="experience.items.5.bullets.2">Revamped and maintained client websites for better performance, security and a refined user experience.</span></li>
             </ul>
-            <ul class="tags"><li class="tag" dir="ltr">Admin Tools</li><li class="tag" dir="ltr">Analytics</li><li class="tag" dir="ltr">Web</li></ul>
+            <ul class="tags"><li class="tag"><bdi>Admin Tools</bdi></li><li class="tag"><bdi>Analytics</bdi></li><li class="tag"><bdi>Web</bdi></li></ul>
           </div>
         </div>
       </details>
@@ -395,7 +396,7 @@
   <!-- ============================== 04 SKILLS =============================== -->
   <section id="skills" class="sheet" aria-labelledby="h-skills">
       <header class="sect-head">
-        <span class="sect-num micro" data-num-en="04" data-num-ar="٤" aria-hidden="true"></span>
+        <span class="sect-num micro" data-num="04" aria-hidden="true"></span>
         <span class="eyebrow micro" data-t="skills.kicker">Stack</span>
         <h2 data-t="skills.title" id="h-skills">What I build with</h2>
       </header>
@@ -403,31 +404,31 @@
     <div class="index">
         <div class="group" style="--i:0">
           <p class="group__head"><span class="group__num mono" aria-hidden="true">01</span><span class="group__name micro" data-t="skills.groups.0.name">Programming Languages</span></p>
-          <p class="group__items"><span class="skill" dir="ltr">C#</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Java</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">JavaScript</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">SQL</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">HTML</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">CSS</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">C++</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">C</span></p>
+          <p class="group__items"><span class="skill"><bdi>C#</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>Java</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>JavaScript</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>SQL</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>HTML</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>CSS</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>C++</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>C</bdi></span></p>
         </div>
         <div class="group" style="--i:1">
           <p class="group__head"><span class="group__num mono" aria-hidden="true">02</span><span class="group__name micro" data-t="skills.groups.1.name">Frameworks &amp; Libraries</span></p>
-          <p class="group__items"><span class="skill" dir="ltr">.NET Core</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">ASP.NET</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Spring Boot</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Angular</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">SignalR</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Razor</span></p>
+          <p class="group__items"><span class="skill"><bdi>.NET Core</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>ASP.NET</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>Spring Boot</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>Angular</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>SignalR</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>Razor</bdi></span></p>
         </div>
         <div class="group" style="--i:2">
           <p class="group__head"><span class="group__num mono" aria-hidden="true">03</span><span class="group__name micro" data-t="skills.groups.2.name">Databases</span></p>
-          <p class="group__items"><span class="skill" dir="ltr">Microsoft SQL Server</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">MySQL</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Redis</span></p>
+          <p class="group__items"><span class="skill"><bdi>Microsoft SQL Server</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>MySQL</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>Redis</bdi></span></p>
         </div>
         <div class="group" style="--i:3">
           <p class="group__head"><span class="group__num mono" aria-hidden="true">04</span><span class="group__name micro" data-t="skills.groups.3.name">Protocols</span></p>
-          <p class="group__items"><span class="skill" dir="ltr">HTTP</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">TCP</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">UDP</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">SOAP</span></p>
+          <p class="group__items"><span class="skill"><bdi>HTTP</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>TCP</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>UDP</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>SOAP</bdi></span></p>
         </div>
         <div class="group" style="--i:4">
           <p class="group__head"><span class="group__num mono" aria-hidden="true">05</span><span class="group__name micro" data-t="skills.groups.4.name">Tools &amp; Platforms</span></p>
-          <p class="group__items"><span class="skill" dir="ltr">Visual Studio</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Git</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">RabbitMQ</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">JMeter</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">MetaTrader</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">cTrader</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">cAlgo</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Android Studio</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Eclipse</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">NetBeans</span></p>
+          <p class="group__items"><span class="skill"><bdi>Visual Studio</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>Git</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>RabbitMQ</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>JMeter</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>MetaTrader</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>cTrader</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>cAlgo</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>Android Studio</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>Eclipse</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>NetBeans</bdi></span></p>
         </div>
         <div class="group" style="--i:5">
           <p class="group__head"><span class="group__num mono" aria-hidden="true">06</span><span class="group__name micro" data-t="skills.groups.5.name">Design Patterns</span></p>
-          <p class="group__items"><span class="skill" dir="ltr">Builder</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Repository</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Factory</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Proxy</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">MVC</span></p>
+          <p class="group__items"><span class="skill"><bdi>Builder</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>Repository</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>Factory</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>Proxy</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>MVC</bdi></span></p>
         </div>
         <div class="group" style="--i:6">
           <p class="group__head"><span class="group__num mono" aria-hidden="true">07</span><span class="group__name micro" data-t="skills.groups.6.name">Core Concepts</span></p>
-          <p class="group__items"><span class="skill" dir="ltr">SDLC</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Software Testing</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Requirements Engineering</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Automated Testing</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Financial Applications</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Real-Time Data Processing</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Data Analytics</span> <span class="dot" aria-hidden="true">·</span> <span class="skill" dir="ltr">Web Development</span></p>
+          <p class="group__items"><span class="skill"><bdi>SDLC</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>Software Testing</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>Requirements Engineering</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>Automated Testing</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>Financial Applications</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>Real-Time Data Processing</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>Data Analytics</bdi></span> <span class="dot" aria-hidden="true">·</span> <span class="skill"><bdi>Web Development</bdi></span></p>
         </div>
     </div>
   </section>
@@ -435,7 +436,7 @@
   <!-- ====================== 05 EDUCATION & CONTACT ========================== -->
   <section id="contact" class="sheet" aria-labelledby="h-contact">
       <header class="sect-head">
-        <span class="sect-num micro" data-num-en="05" data-num-ar="٥" aria-hidden="true"></span>
+        <span class="sect-num micro" data-num="05" aria-hidden="true"></span>
         <span class="eyebrow micro" data-t="contact.kicker">Contact</span>
         <h2 data-t="contact.title" id="h-contact">Let&#x27;s talk</h2>
       </header>
@@ -453,10 +454,10 @@
     <div class="reach">
       <p class="reach__lead" data-t="contact.lead">Open to engineering roles and collaboration — fintech, ERP, or anything that has to stay correct under load.</p>
       <ul class="reach__list">
-        <li><a class="link reach__line" href="mailto:Nader.7.samir@gmail.com"><span class="reach__key micro"><span data-t="contact.emailLabel">Email</span></span><bdi dir="ltr">Nader.7.samir@gmail.com</bdi></a></li>
-        <li><a class="link reach__line" href="tel:+962777690484"><span class="reach__key micro"><span data-t="contact.phoneLabel">Phone</span></span><bdi dir="ltr">+962 7 7769 0484</bdi></a></li>
-        <li><a class="link reach__line" href="https://github.com/NaderAlsouqi" target="_blank" rel="noopener noreferrer"><span class="reach__key micro"><span data-t="ui.github">GitHub</span></span><bdi dir="ltr">@NaderAlsouqi</bdi></a></li>
-        <li><a class="link reach__line" href="https://www.linkedin.com/in/nader-alsouqi-269789335/" target="_blank" rel="noopener noreferrer"><span class="reach__key micro"><span data-t="ui.linkedin">LinkedIn</span></span><bdi dir="ltr">nader-alsouqi</bdi></a></li>
+        <li><a class="link reach__line" href="mailto:Nader.7.samir@gmail.com"><span class="reach__key micro"><span data-t="contact.emailLabel">Email</span></span><span class="reach__val"><bdi>Nader.7.samir@gmail.com</bdi></span></a></li>
+        <li><a class="link reach__line" href="tel:+962777690484"><span class="reach__key micro"><span data-t="contact.phoneLabel">Phone</span></span><span class="reach__val"><bdi>+962 7 7769 0484</bdi></span></a></li>
+        <li><a class="link reach__line" href="https://github.com/NaderAlsouqi" target="_blank" rel="noopener noreferrer"><span class="reach__key micro"><span data-t="ui.github">GitHub</span></span><span class="reach__val"><bdi>@NaderAlsouqi</bdi></span></a></li>
+        <li><a class="link reach__line" href="https://www.linkedin.com/in/nader-alsouqi-269789335/" target="_blank" rel="noopener noreferrer"><span class="reach__key micro"><span data-t="ui.linkedin">LinkedIn</span></span><span class="reach__val"><bdi>nader-alsouqi</bdi></span></a></li>
       </ul>
       <p class="reach__actions">
         <a class="link link--cta" href="assets/Nader_Samir_Alsouqi_CV.pdf" download><span data-t="contact.cvLabel">Download CV</span> <span aria-hidden="true">↓</span></a>

@@ -51,7 +51,9 @@
      neutrals around them reorder: ".NET Core" renders as "NET Core." and
      "C#" as "#C" inside an Arabic paragraph. <bdi> isolates without forcing
      a direction, which is what we want. */
-  var LATIN_RUN = /\.?[A-Za-z0-9][A-Za-z0-9.+#&/_'’-]*(?:[  ]+\.?[A-Za-z0-9][A-Za-z0-9.+#&/_'’-]*)*/g;
+  /* A run may open with '#' or '.' so hex codes and .NET-style names are
+     isolated whole; without the '#', "#FFFFFF" renders as "FFFFFF#". */
+  var LATIN_RUN = /[#]?\.?[A-Za-z0-9][A-Za-z0-9.+#&/_'’-]*(?:[  ]+[#]?\.?[A-Za-z0-9][A-Za-z0-9.+#&/_'’-]*)*/g;
   var ARABIC_RUN = /[؀-ۿݐ-ݿ][؀-ۿݐ-ݿ،؛؟\s]*[؀-ۿݐ-ݿ]|[؀-ۿݐ-ݿ]/g;
 
   function isolate(text, lang) {
@@ -96,7 +98,8 @@
       }
     }
 
-    document.title = str('meta.title', lang);
+    var title = str('meta.title', lang);
+    if (title) document.title = title;
     setMeta('name', 'description', str('meta.description', lang));
     setMeta('property', 'og:title', str('meta.title', lang));
     setMeta('property', 'og:description', str('meta.ogDescription', lang));
@@ -115,6 +118,15 @@
 
   var langBtn = document.getElementById('langBtn');
   var arInjected = root.lang === 'ar';
+
+  /* The button's LABEL is in the other language, not the button itself — the
+     lang attribute belongs on the span holding that text, or a screen reader
+     announces the button's own aria-label in the wrong voice. */
+  function syncLangButton() {
+    if (!langBtn) return;
+    var label = langBtn.querySelector('[data-t]');
+    if (label) label.setAttribute('lang', root.lang === 'ar' ? 'en' : 'ar');
+  }
 
   function ensureArabicFonts() {
     if (arInjected) return Promise.resolve();
@@ -137,7 +149,7 @@
 
     renderStrings(next);
 
-    if (langBtn) langBtn.setAttribute('lang', next === 'ar' ? 'en' : 'ar');
+    syncLangButton();
 
     /* Reveals must not replay when only the text changed. */
     var seen = document.querySelectorAll('.is-in');
@@ -194,22 +206,28 @@
   /* Re-render on load so any string that drifted from the static HTML is
      corrected, and so Arabic is applied when it was restored from storage. */
   renderStrings(root.lang === 'ar' ? 'ar' : 'en');
+  syncLangButton();
 
   /* ---------------------------------------------------------------- theme */
 
   var themeBtn = document.getElementById('themeBtn');
 
-  function applyTheme(next) {
+  /* Persist ONLY on an explicit click. Writing on load would freeze whatever
+     the OS preference happened to be on the first visit, so a later switch to
+     dark at the system level would never reach this page again. */
+  function applyTheme(next, persist) {
     root.setAttribute('data-theme', next);
-    try { localStorage.setItem('theme', next); } catch (e) { /* private mode */ }
+    if (persist) {
+      try { localStorage.setItem('theme', next); } catch (e) { /* private mode */ }
+    }
     if (themeBtn) themeBtn.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
   }
 
-  applyTheme(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+  applyTheme(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light', false);
 
   if (themeBtn) {
     themeBtn.addEventListener('click', function () {
-      applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+      applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark', true);
     });
   }
 
@@ -240,17 +258,27 @@
 
   function markActive(id) {
     for (var i = 0; i < navLinks.length; i++) {
-      var match = navLinks[i].getAttribute('href') === '#' + id;
+      var match = id && navLinks[i].getAttribute('href') === '#' + id;
       if (match) navLinks[i].setAttribute('aria-current', 'true');
       else navLinks[i].removeAttribute('aria-current');
     }
   }
 
   if ('IntersectionObserver' in window) {
+    /* Track the whole set rather than the last intersecting entry, so scrolling
+       back up to the hero clears the marker instead of stranding it. */
+    var inView = [];
     var spy = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (entry.isIntersecting) markActive(entry.target.id);
+        var at = inView.indexOf(entry.target);
+        if (entry.isIntersecting && at === -1) inView.push(entry.target);
+        else if (!entry.isIntersecting && at !== -1) inView.splice(at, 1);
       });
+      var first = null;
+      for (var s = 0; s < sections.length; s++) {
+        if (inView.indexOf(sections[s]) !== -1) { first = sections[s].id; break; }
+      }
+      markActive(first);
     }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
     for (var t = 0; t < sections.length; t++) {
       if (sections[t].id && sections[t].id !== 'hero') spy.observe(sections[t]);

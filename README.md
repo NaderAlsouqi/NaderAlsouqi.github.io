@@ -38,12 +38,18 @@ python -m http.server 5178      # then open http://localhost:5178
 
 Or just double-click `index.html`.
 
-Two query parameters are handy for sharing and testing — both also persist to `localStorage`:
+Two query parameters are handy for sharing and testing. Neither is persisted —
+they override for that page load only, so a link cannot silently change what a
+visitor sees next time:
 
 | URL | Effect |
 |---|---|
 | `?lang=ar` | open in Arabic (RTL) |
 | `?theme=dark` | open in dark |
+
+A choice made with the toggles *is* remembered. The theme is only written to
+`localStorage` on an explicit click, so the OS `prefers-color-scheme` keeps
+working for anyone who never touches the control.
 
 ## Deploy
 
