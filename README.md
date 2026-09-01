@@ -9,26 +9,19 @@ Open `index.html` and it works.
 
 ## The theme
 
-Everything visual is derived from the graphite portrait in `assets/profile.jpg`, and the derivation is
-measured rather than guessed. The file is **100% achromatic** — zero channel deviation, so there is no
-warm paper and no cool graphite in it. **82.93%** of the frame is literally `#FFFFFF`. The mean mark
-below L245 is **`#BCBCBC`** and the darkest mark in the whole drawing is **`#363636`**.
+A printed art monograph: a strictly neutral graphite ramp with exactly one added
+ink — sanguine, the red chalk that historically partners graphite. Nothing on the
+page carries colour except that accent.
 
-So the palette is a strictly neutral graphite ramp taken from those numbers, with exactly one added
-ink — sanguine, the red chalk that historically partners graphite — declared as an addition in the
-page's colophon rather than passed off as sampled.
+The layout idiom is printed matter, not web cards: a named-line 12-column sheet,
+hairline rules, dot leaders, plate numbers, a drop cap, folios, crop marks, and one
+reusable "wall label" `<dl>` that carries *every* piece of metadata on the site.
 
-The layout idiom is printed matter, not web cards: a named-line 12-column sheet, hairline rules, dot
-leaders, plate numbers, a drop cap, folios, crop marks, a tone wedge built from the measured values,
-and one reusable "wall label" `<dl>` that carries *every* piece of metadata on the site.
-
-**Light** is the drawing as made — the portrait is `multiply`-blended onto the page, so its white paper
-annihilates exactly and the graphite lands directly on the sheet with no edge, no frame, no box.
-
-**Dark** hangs the same drawing as a mounted plate: its paper knocked back and warmed slightly, a
-hairline rule, crop marks. (An inverted "negative" dark treatment was built first and rejected —
-a drawing that is 83% white inverts to 83% black and reads as a void no matter how bright the strokes
-are pushed.)
+The portrait is presented in both themes as a **mounted plate** — rendered in neutral
+greyscale, squared off, with a hairline rule and registration marks around it, and a
+caption beneath. It is knocked back slightly in dark mode so it does not glare. The
+greyscale is applied in CSS (`--portrait-filter`), so the source file stays in colour
+and the treatment can be changed in one place.
 
 ## Run it
 
@@ -69,7 +62,7 @@ styles.css    design tokens, both themes, the Arabic parallel type system, RTL, 
 script.js     language swap, theme, scroll reveals, copy-email
 content.js    window.CONTENT — every string in English and Arabic
 assets/
-  profile.jpg                    the portrait (1080×1080)
+  profile.jpg                    the portrait (1080×1350, 4:5)
   favicon.svg                    theme-aware monogram
   Nader_Samir_Alsouqi_CV.pdf     designed CV
   Nader_Samir_Alsouqi_CV_ATS.pdf ATS-safe CV

@@ -8,8 +8,8 @@ window.CONTENT = {
       "ar": "نبذة"
     },
     "title": {
-      "en": "The engineer behind the sketch",
-      "ar": "المهندس خلف الرسم"
+      "en": "The engineer behind the systems",
+      "ar": "المهندس خلف الأنظمة"
     },
     "lead": {
       "en": "Thirteen-plus years building enterprise software where being wrong costs money: trading screens, token wallets, rental fleets and accounting ledgers.",
@@ -980,8 +980,8 @@ window.CONTENT = {
       "ar": "© {year} نادر سمير السوقي"
     },
     "portraitAlt": {
-      "en": "Graphite sketch portrait of Nader Samir Alsouqi",
-      "ar": "بورتريه لنادر سمير السوقي مرسوم بالقلم الرصاص"
+      "en": "Portrait of Nader Samir Alsouqi",
+      "ar": "بورتريه لنادر سمير السوقي"
     },
     "ariaPrimaryNav": {
       "en": "Primary navigation",
@@ -1086,12 +1086,12 @@ window.CONTENT = {
   },
   "captions": {
     "plate": {
-      "en": "Pl. 01 — graphite on bond, 2026",
-      "ar": "اللوحة 01 — رصاص على ورق، 2026"
+      "en": "Pl. 01 — portrait, Amman, 2026",
+      "ar": "اللوحة 01 — بورتريه، عمّان، 2026"
     },
     "colophon": {
-      "en": "Typeset in Fraunces, Source Serif 4, IBM Plex Mono, Reem Kufi and IBM Plex Sans Arabic. Value ramp sampled from the drawing: 100% achromatic, paper #FFFFFF across 83% of the frame, mean deposit #BCBCBC, darkest mark #363636. Sanguine is an added ink. Hand-written HTML, CSS and JavaScript. No frameworks, no build step. Amman, 2026.",
-      "ar": "صُفّ النص بخطوط Fraunces وSource Serif 4 وIBM Plex Mono وReem Kufi وIBM Plex Sans Arabic. سُلّم القيم مأخوذ من الرسم نفسه: خالٍ من اللون تمامًا، والورق #FFFFFF في 83% من المساحة، ومتوسّط الأثر #BCBCBC، وأغمق أثر #363636. اللون الطوبي حبر مُضاف لا مأخوذ من الرسم. كُتبت HTML وCSS وJavaScript يدويًا، دون أُطر عمل أو أدوات بناء. عمّان، 2026."
+      "en": "Typeset in Fraunces, Source Serif 4, IBM Plex Mono, Reem Kufi and IBM Plex Sans Arabic. A strictly neutral graphite ramp, with sanguine as the one added ink. Hand-written HTML, CSS and JavaScript. No frameworks, no build step. Amman, 2026.",
+      "ar": "صُفّ النص بخطوط Fraunces وSource Serif 4 وIBM Plex Mono وReem Kufi وIBM Plex Sans Arabic. سُلّم رمادي محايد تمامًا، واللون الطوبي هو الحبر المُضاف الوحيد. كُتبت HTML وCSS وJavaScript يدويًا، دون أُطر عمل أو أدوات بناء. عمّان، 2026."
     }
   }
 };

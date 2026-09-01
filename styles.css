@@ -1,14 +1,11 @@
 @charset "utf-8";
 /* ==========================================================================
    Recto / Verso — Nader Samir Alsouqi
-   A printed art monograph. The value ramp is sampled from the portrait in
-   assets/profile.jpg, which measures 100% achromatic: 82.93% of the frame is
-   literally #FFFFFF, the mean deposit is #BCBCBC and the darkest mark #363636.
-   So the palette is strictly neutral, and sanguine is declared as an added
-   ink rather than a sampled one.
-   Light = the drawing as made (graphite multiplied onto the page's paper).
-   Dark  = the same drawing mounted as a plate: its own paper knocked back and
-           warmed, hairline rule, crop marks, hung on a dark wall.
+   A printed art monograph on a strictly neutral graphite ramp, with exactly
+   one added ink — sanguine, the red chalk that historically partners graphite.
+   The portrait is a photograph, presented in both themes as a mounted plate:
+   neutral greyscale, a hairline rule, crop marks. The palette stays a strictly
+   neutral graphite ramp so the page reads as one monochrome system.
    ========================================================================== */
 
 @property --tone {
@@ -45,8 +42,8 @@
   --grain-fine-op:   0.055;
   --grain-cloud-op:  0.05;
   --grain-blend:     multiply;
-  --portrait-blend:  multiply;
-  --portrait-filter: grayscale(1) contrast(1.06);
+  --portrait-blend:  normal;
+  --portrait-filter: grayscale(1) contrast(1.05);
 
   /* geometry */
   --margin:    clamp(20px, 5vw, 88px);
@@ -57,10 +54,10 @@
   --origin:      left;
   --plate-focus-x: 38%;
   --plate-focus-y: 42%;
-  /* Light: the paper multiplies away, so the drawing is feathered into the
-     page and has no edge at all. Dark: see the dark-theme block. */
-  --portrait-mask: radial-gradient(115% 100% at var(--plate-focus-x) var(--plate-focus-y), #000 55%, transparent 92%);
-  --plate-rule: 1px solid transparent;
+  /* A photograph has no white ground to blend away, so it is squared off as
+     a plate in both themes rather than feathered into the page. */
+  --portrait-mask: none;
+  --plate-rule: 1px solid var(--rule);
 
   /* spacing */
   --s-1: .25rem;  --s-2: .5rem;   --s-3: .75rem;  --s-4: 1rem;
@@ -131,18 +128,9 @@
   --grain-fine-op:  .045;
   --grain-cloud-op: .04;
   --grain-blend:    screen;
-  /* Inverting was the original idea and it does not survive contact with this
-     drawing: the source is 83% white, so the negative is 83% black and the
-     portrait reads as a void however bright the strokes are pushed. Dark mode
-     keeps the drawing POSITIVE instead and treats it as a mounted plate —
-     paper knocked back to a soft off-white, warmed slightly so it reads as
-     stock rather than screen, and feathered into the page by the radial mask
-     so there is still no frame and no hard white box. */
+  /* Knocked back a touch on a dark page so the plate does not glare. */
   --portrait-blend: normal;
-  --portrait-filter: grayscale(1) sepia(.12) brightness(.84) contrast(1.06);
-  /* A feather would have to eat half the drawing to reach the edges, so the
-     dark plate is squared off honestly instead: a mounted print with a
-     hairline rule, sitting inside the crop marks. */
+  --portrait-filter: grayscale(1) contrast(1.02) brightness(.88);
   --portrait-mask: none;
   --plate-rule: 1px solid var(--rule-strong);
 
@@ -541,7 +529,7 @@ html[lang="ar"] .hero__line2 { font-weight: 600; margin-inline-start: 0; }
 
 .plate__img {
   width: 100%;
-  aspect-ratio: 5 / 6;
+  aspect-ratio: 4 / 5;
   /* On a short laptop screen a full-height plate pushes the face below the
      fold, so the plate gets shorter and the crop tightens on the head. */
   max-block-size: min(62vh, 620px);
@@ -578,7 +566,7 @@ html[lang="ar"] .hero__line2 { font-weight: 600; margin-inline-start: 0; }
 
 /* If the portrait ever fails to load, the plate still reads as a plate. */
 .plate__inner.is-fallback {
-  aspect-ratio: 5 / 6;
+  aspect-ratio: 4 / 5;
   display: grid;
   place-items: center;
   background-color: var(--field);
@@ -1163,7 +1151,7 @@ html[lang="en"] .link--cta { text-transform: uppercase; letter-spacing: var(--tr
   /* Square, uncropped: the source is a square drawing, so honour it. The
      viewport-height cap is a desktop concern only — left on, it turns the
      portrait into a tall slice of a face. */
-  .plate__img { aspect-ratio: 1; max-block-size: none; object-position: center; }
+  .plate__img { aspect-ratio: 4 / 5; max-block-size: none; object-position: center; }
   [dir="rtl"] .plate__img { object-position: center; }
   .about__prose { column-count: 1 !important; }
   .specimen { margin-block-start: var(--s-8); }
