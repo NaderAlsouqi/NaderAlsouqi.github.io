@@ -12,8 +12,8 @@ window.CONTENT = {
       "ar": "المهندس خلف الرسم"
     },
     "lead": {
-      "en": "Eight-plus years building enterprise software where being wrong costs money: trading screens, token wallets, rental fleets and accounting ledgers.",
-      "ar": "أكثر من ثماني سنوات في بناء برمجيات مؤسسية لا تحتمل الخطأ: شاشات تداول، ومحافظ عملات رقمية، وأساطيل تأجير، ودفاتر محاسبية."
+      "en": "Thirteen-plus years building enterprise software where being wrong costs money: trading screens, token wallets, rental fleets and accounting ledgers.",
+      "ar": "أكثر من ثلاث عشرة سنة في بناء برمجيات مؤسسية لا تحتمل الخطأ: شاشات تداول، ومحافظ عملات رقمية، وأساطيل تأجير، ودفاتر محاسبية."
     },
     "paragraphs": [
       {
@@ -82,8 +82,8 @@ window.CONTENT = {
       "ar": "الرمثا، الأردن"
     },
     "note": {
-      "en": "A formal software engineering degree — the base for eight-plus years of enterprise work across fintech, blockchain and ERP.",
-      "ar": "شهادة أكاديمية في هندسة البرمجيات شكّلت الأساس لأكثر من ثماني سنوات من العمل المؤسسي في التقنية المالية والبلوك تشين وأنظمة ERP."
+      "en": "A formal software engineering degree — the base for thirteen-plus years of work across web, mobile, fintech, blockchain and ERP.",
+      "ar": "شهادة أكاديمية في هندسة البرمجيات شكّلت الأساس لأكثر من ثلاث عشرة سنة من العمل في الويب وتطبيقات الهاتف والتقنية المالية والبلوك تشين وأنظمة ERP."
     }
   },
   "experience": {
@@ -92,8 +92,8 @@ window.CONTENT = {
       "ar": "المسار"
     },
     "title": {
-      "en": "Six roles, newest first",
-      "ar": "ست محطات، الأحدث أوّلًا"
+      "en": "Eight roles, newest first",
+      "ar": "ثماني محطات، الأحدث أوّلًا"
     },
     "items": [
       {
@@ -369,6 +369,99 @@ window.CONTENT = {
           "Analytics",
           "Web"
         ]
+      },
+      {
+        "company": {
+          "en": "Freelance",
+          "ar": "عمل مستقل"
+        },
+        "role": {
+          "en": "Android Developer",
+          "ar": "مطوّر أندرويد"
+        },
+        "period": {
+          "en": "2015 — 2017",
+          "ar": "2015 — 2017"
+        },
+        "headline": {
+          "en": "Freelance Android projects",
+          "ar": "مشاريع أندرويد مستقلة"
+        },
+        "location": {
+          "en": "",
+          "ar": ""
+        },
+        "bullets": [
+          {
+            "en": "Built Android applications for freelance clients in Java, working with each client directly from requirements through delivery.",
+            "ar": "طوّرت تطبيقات أندرويد لعملاء مستقلين باستخدام Java، بالعمل المباشر مع كل عميل من تحديد المتطلبات حتى التسليم."
+          },
+          {
+            "en": "Carried each project end to end alone — scoping, implementation, testing and hand-off.",
+            "ar": "توليت دورة المشروع كاملة بمفردي: تحديد النطاق والتنفيذ والاختبار والتسليم."
+          }
+        ],
+        "tags": [
+          "Android",
+          "Java",
+          "Android Studio"
+        ]
+      },
+      {
+        "company": {
+          "en": "Nexttwo",
+          "ar": "Nexttwo"
+        },
+        "role": {
+          "en": ".NET Developer",
+          "ar": "مطوّر .NET"
+        },
+        "period": {
+          "en": "2012 — 2015",
+          "ar": "2012 — 2015"
+        },
+        "headline": {
+          "en": "Web applications & backend services",
+          "ar": "تطبيقات ويب وخدمات خلفية"
+        },
+        "location": {
+          "en": "",
+          "ar": ""
+        },
+        "bullets": [
+          {
+            "en": "Developed and maintained web applications in C#, ASP.NET MVC and Web API.",
+            "ar": "طوّرت تطبيقات ويب باستخدام C# وASP.NET MVC وWeb API وتوليت صيانتها."
+          },
+          {
+            "en": "Designed and implemented RESTful APIs and backend services on clean, scalable architecture principles.",
+            "ar": "صمّمت ونفّذت واجهات REST وخدمات خلفية وفق مبادئ معمارية نظيفة وقابلة للتوسّع."
+          },
+          {
+            "en": "Worked extensively in Microsoft SQL Server — database design, complex queries, stored procedures, views and performance tuning.",
+            "ar": "عملت بعمق على Microsoft SQL Server: تصميم قواعد البيانات والاستعلامات المعقّدة والإجراءات المخزّنة والعروض وتحسين الأداء."
+          },
+          {
+            "en": "Built responsive, interactive interfaces with HTML, CSS, JavaScript, jQuery, Bootstrap and AJAX.",
+            "ar": "بنيت واجهات مستخدم تفاعلية ومتجاوبة باستخدام HTML وCSS وJavaScript وjQuery وBootstrap وAJAX."
+          },
+          {
+            "en": "Implemented authentication, authorization, validation, logging and error handling, and integrated third-party APIs over JSON.",
+            "ar": "طبّقت آليات المصادقة والتفويض والتحقّق والتسجيل ومعالجة الأخطاء، ودمجت خدمات وواجهات API خارجية عبر JSON."
+          },
+          {
+            "en": "Traced and resolved production issues, and worked with QA and business teams to analyse requirements and ship new features.",
+            "ar": "تتبّعت أعطال بيئة الإنتاج وعالجتها، وعملت مع فرق الجودة والأعمال على تحليل المتطلبات وتسليم وظائف جديدة."
+          }
+        ],
+        "tags": [
+          "C#",
+          "ASP.NET MVC",
+          "Web API",
+          "SQL Server",
+          "jQuery",
+          "Bootstrap"
+        ]
       }
     ],
     "expandHint": {
@@ -390,8 +483,8 @@ window.CONTENT = {
       "ar": "مهندس برمجيات"
     },
     "years": {
-      "en": "8+ years",
-      "ar": "أكثر من 8 سنوات"
+      "en": "13+ years",
+      "ar": "أكثر من 13 سنة"
     },
     "tagline": {
       "en": "I build the systems money moves through — trading platforms, blockchain wallets and multi-branch ERP, mostly in .NET Core and C#.",
@@ -428,12 +521,12 @@ window.CONTENT = {
       "ar": "نادر سمير السوقي — مهندس برمجيات"
     },
     "description": {
-      "en": "Software engineer in Amman, Jordan. 8+ years in .NET Core and C#, building trading, blockchain and ERP systems.",
-      "ar": "مهندس برمجيات في عمّان، الأردن. أكثر من 8 سنوات في .NET Core وC# لبناء أنظمة التداول والبلوك تشين وERP."
+      "en": "Software engineer in Amman, Jordan. 13+ years in .NET and C#, building trading, blockchain and ERP systems.",
+      "ar": "مهندس برمجيات في عمّان، الأردن. أكثر من 13 سنة في .NET وC# لبناء أنظمة التداول والبلوك تشين وERP."
     },
     "ogDescription": {
-      "en": "8+ years of enterprise engineering across fintech, blockchain and ERP — .NET Core, C#, Angular, SQL Server.",
-      "ar": "أكثر من 8 سنوات في هندسة الأنظمة المؤسسية ضمن مجالات التقنية المالية والبلوك تشين وERP: .NET Core وC# وAngular وSQL Server."
+      "en": "13+ years of engineering across web, mobile, fintech, blockchain and ERP — .NET Core, C#, Angular, SQL Server.",
+      "ar": "أكثر من 13 سنة في الهندسة عبر الويب وتطبيقات الهاتف والتقنية المالية والبلوك تشين وERP: .NET Core وC# وAngular وSQL Server."
     }
   },
   "nav": [
@@ -678,7 +771,9 @@ window.CONTENT = {
           "Spring Boot",
           "Angular",
           "SignalR",
-          "Razor"
+          "Razor",
+          "jQuery",
+          "Bootstrap"
         ]
       },
       {
@@ -755,14 +850,14 @@ window.CONTENT = {
   },
   "stats": [
     {
-      "value": "8+",
+      "value": "13+",
       "label": {
         "en": "Years of experience",
         "ar": "سنوات خبرة"
       }
     },
     {
-      "value": "6",
+      "value": "8",
       "label": {
         "en": "Companies worked with",
         "ar": "شركات عملت فيها"
@@ -955,8 +1050,8 @@ window.CONTENT = {
       "ar": "بداية الممارسة"
     },
     "companies": {
-      "en": "Companies",
-      "ar": "الشركات"
+      "en": "Roles",
+      "ar": "المحطات"
     },
     "domains": {
       "en": "Domains",
